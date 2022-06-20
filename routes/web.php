@@ -15,16 +15,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return 'Esta ruta web hace un get de la página de inicio';
+    echo "<a href='" . route('articulos') . "'>Articulos 1</a><br>";
+    echo "<a href='" . route('articulos') . "'>Articulos 2</a><br>";
+    echo "<a href='" . route('articulos') . "'>Articulos 3</a><br>";
 });
 
 
 Route::get('blog', function () {
-    // return view('welcome');
+
     return 'Hola desde la página del blog';
+})->name('articulos');
+
+// Route::get('contacto', function () {
+
+//     $tipo = 'telefónico';
+//     return view('contacto', compact('tipo'));
+// });
+
+Route::view('/contacto', 'contacto');
+
+
+Route::get('seccion/{nombreSeccion?}', function ($nombreSeccion = 'No estás en ninguna sección') {
+
+    return 'Estás en la sección: ' . $nombreSeccion;
 });
 
-Route::get('contacto', function () {
-    // return view('welcome');
-    return 'Hola desde la página de contacto';
-});
+
