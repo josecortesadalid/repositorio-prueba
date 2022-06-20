@@ -23,3 +23,8 @@ Route::get('blog', function () {
     // return view('welcome');
     return 'Hola desde la página del blog';
 });
+
+Route::get('contacto', function () {
+    // return view('welcome');
+    return 'Hola desde la página de contacto';
+});
