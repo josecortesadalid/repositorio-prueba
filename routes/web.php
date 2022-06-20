@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('blog', function () {
+Route::get('noticias', function () {
 
     return 'Hola desde la página del blog';
 })->name('articulos');
@@ -40,4 +41,6 @@ Route::get('seccion/{nombreSeccion?}', function ($nombreSeccion = 'No estás en 
     return 'Estás en la sección: ' . $nombreSeccion;
 });
 
+
+Route::get('/blog', '\App\Http\Controllers\BlogController')->name('blog');
 
