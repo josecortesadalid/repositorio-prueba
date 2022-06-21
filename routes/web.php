@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TiendaController;
+use App\Http\Controllers\Carrito;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,8 @@ Route::get('seccion/{nombreSeccion?}', function ($nombreSeccion = 'No estás en 
 
 Route::get('/blog', BlogController::class)->name('blog');
 
-Route::get('/tienda', [TiendaController::class, 'index'])->name('tienda');
+// Route::get('/tienda', [TiendaController::class, 'index'])->name('tienda');
 
+Route::resource('/tienda', TiendaController::class)->except(['index', 'show']);
+
+Route::apiResource('/carrito', Carrito::class);
