@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,8 @@ Route::get('seccion/{nombreSeccion?}', function ($nombreSeccion = 'No estás en 
 });
 
 
-Route::get('/blog', '\App\Http\Controllers\BlogController')->name('blog');
+// Route::get('/blog', '\App\Http\Controllers\BlogController')->name('blog');
+
+Route::get('/blog', BlogController::class)->name('blog');
+
 
