@@ -68,6 +68,8 @@ Route::any('formulario', function () {
     return request('search');
 });
 
-Route::get('/portfolio', [PortfolioController::class, 'index']);
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('projects.index');
 
+Route::get('/portfolio/crear', [PortfolioController::class, 'create'])->name('projects.create');
+Route::post('/portfolio/store', [PortfolioController::class, 'store'])->name('projects.store');
 Route::get('/portfolio/{id}', [PortfolioController::class, 'show']);

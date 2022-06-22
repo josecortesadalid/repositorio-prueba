@@ -11,17 +11,20 @@
 
 <h1>@lang('Portfolio')</h1>
 
+<a href="{{ route('projects.create') }}"> Crear proyecto </a>
+
 <ul>
     @forelse($portfolio as $portfolioItem)
 
-        <li>{{ $portfolioItem->id }}</li>
+        <li>{{ $portfolioItem->nombre }}</li>
         @empty
         <li>No hay proyectos</li>
 
     @endforelse
+    
 </ul>
 
-{{$portfolio->links()}}
+
 
 </body>
 </html>

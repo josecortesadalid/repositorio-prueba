@@ -14,7 +14,7 @@ class PortfolioController extends Controller
     public function index()
     {
         // $portfolio = DB::table('projects')->get();
-        $portfolio = Project::latest()->paginate(1);
+        $portfolio = Project::get();
 
         return view('portafolio',compact('portfolio'));
     }
@@ -27,4 +27,30 @@ class PortfolioController extends Controller
         //     'portfolio' => Project::findOrFail($id)
         // ]);
     }
+
+    public function create()
+    {
+        return view('create');
+    }
+
+    public function store()
+    {
+        // request()->save();
+        $nombre = request('nombre');
+        $descripcion = request('descripcion');
+        $titular_url = request('titular_url');
+        $tecnologias = request('tecnologias');
+
+        Project::create([
+            'nombre' => $nombre,
+            'descripcion' => $descripcion, 
+            'titular_url' => $titular_url,
+            'tecnologias' => $tecnologias
+        ]);
+
+        return redirect()->route('projects.index');
+
+        // return request('nombre');
+    }
+
 }
