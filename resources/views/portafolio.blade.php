@@ -21,6 +21,8 @@
     @endforelse
 </ul>
 
+{{$portfolio->links()}}
+
 </body>
 </html>
 

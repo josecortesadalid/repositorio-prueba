@@ -14,7 +14,7 @@ class PortfolioController extends Controller
     public function index()
     {
         // $portfolio = DB::table('projects')->get();
-        $portfolio = Project::orderBy('created_at', 'DESC')->get();
+        $portfolio = Project::latest()->paginate(1);
 
         return view('portafolio',compact('portfolio'));
     }
