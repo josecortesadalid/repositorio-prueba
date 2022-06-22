@@ -12,5 +12,11 @@
         <input type="text" name="search">
         <input type="submit" value="BUSCAR">
     </form>
+    <h1> POST </h1>
+    <form action="formulario" method="POST">
+        @csrf
+        <input type="text" name="search">
+        <input type="submit" value="BUSCAR">
+    </form>
 </body>
 </html>

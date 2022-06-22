@@ -7,6 +7,7 @@ use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\FormularioController;
 
 use App\Http\Controllers\Carrito;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +63,9 @@ Route::get('form', function () {
 
     return view('formulario');
 });
-Route::get('formulario', function () {
+Route::any('formulario', function () {
 
     return request('search');
 });
+
+Route::get('/portfolio', [PortfolioController::class, 'index']);
