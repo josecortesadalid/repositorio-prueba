@@ -4,6 +4,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TiendaController;
+use App\Http\Controllers\FormularioController;
+
 use App\Http\Controllers\Carrito;
 
 /*
@@ -54,3 +56,13 @@ Route::get('/blog', BlogController::class)->name('blog');
 Route::resource('/tienda', TiendaController::class)->except(['index', 'show']);
 
 Route::apiResource('/carrito', Carrito::class);
+
+// Route::get('/formulario', FormularioController::class);
+Route::get('form', function () {
+
+    return view('formulario');
+});
+Route::get('formulario', function () {
+
+    return request('search');
+});
