@@ -19,4 +19,12 @@ class PortfolioController extends Controller
         return view('portafolio',compact('portfolio'));
     }
 
+    public function show(Project $id)
+    {
+        return $id;
+
+        // return view('portafolio.show', [
+        //     'portfolio' => Project::findOrFail($id)
+        // ]);
+    }
 }

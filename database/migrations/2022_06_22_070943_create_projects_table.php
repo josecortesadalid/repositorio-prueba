@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('tecnologias');
+            $table->string('titular_url')->unique();
             $table->timestamps();
         });
     }

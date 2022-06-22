@@ -69,3 +69,5 @@ Route::any('formulario', function () {
 });
 
 Route::get('/portfolio', [PortfolioController::class, 'index']);
+
+Route::get('/portfolio/{id}', [PortfolioController::class, 'show']);
