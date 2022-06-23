@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\SaveProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class PortfolioController extends Controller
         return view('create');
     }
 
-    public function store(CreateProjectRequest $request)
+    public function store(SaveProjectRequest $request)
     {
         // request()->save();
         // $nombre = request('nombre');
@@ -81,15 +81,10 @@ class PortfolioController extends Controller
         return view('edit', compact('proyecto'));
     }
 
-    public function update(Project $proyecto)
+    public function update(Project $proyecto, SaveProjectRequest $request)
     {
         // SaveProjectRequest $request
-        $proyecto->update([
-            'nombre' => request('nombre'), 
-            'descripcion' => request('descripcion'),
-            'titular_url' => request('titular_url'),
-            'tecnologias' => request('tecnologias')          
-        ]);
+        $proyecto->update($request->validated());
         return redirect()->route('projects.show', compact('proyecto'));
 
         // return request('nombre');

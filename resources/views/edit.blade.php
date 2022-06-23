@@ -23,22 +23,22 @@
         @csrf @method('PATCH')
         <label>
             Titulo <br>
-            <input type="text" name="nombre" value="{{ $proyecto->nombre }}">
+            <input type="text" name="nombre" value="{{ old('nombre', $proyecto->nombre)  }}">
         </label>
         <br>
         <label>
             Descripcion <br>
-            <input type="text" name="descripcion" value="{{ $proyecto->descripcion }}">
+            <input type="text" name="descripcion" value="{{ old('descripcion', $proyecto->descripcion) }}">
         </label>
         <br>
         <label>
             URL <br>
-            <input type="text" name="titular_url" value="{{ $proyecto->titular_url }}">
+            <input type="text" name="titular_url" value="{{ old('titular_url', $proyecto->titular_url) }}">
         </label>
         <br>
         <label>
             Tecnología <br>
-            <input type="text" name="tecnologias" value="{{ $proyecto->tecnologias }}">
+            <input type="text" name="tecnologias" value="{{ old('tecnologias', $proyecto->tecnologias) }}">
         </label>
         <br>
     <button> Guardar </button>

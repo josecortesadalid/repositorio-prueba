@@ -23,22 +23,22 @@
         @csrf
         <label>
             Titulo <br>
-            <input type="text" name="nombre">
+            <input type="text" name=" old('nombre') ">
         </label>
         <br>
         <label>
             Descripcion <br>
-            <input type="text" name="descripcion">
+            <input type="text" name=" old('descripcion') ">
         </label>
         <br>
         <label>
             URL <br>
-            <input type="text" name="titular_url">
+            <input type="text" name=" old('titular_url') ">
         </label>
         <br>
         <label>
             Tecnología <br>
-            <input type="text" name="tecnologias">
+            <input type="text" name=" old('tecnologias') ">
         </label>
         <br>
     <button> Guardar </button>
