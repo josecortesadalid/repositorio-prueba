@@ -11,36 +11,11 @@
 
     <h2> Crea un registro de un proyecto </h2>
 
-    @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+@include('partials.validation-errors')
 
     <form method="POST" action="{{ route('projects.store') }}">
-        @csrf
-        <label>
-            Titulo <br>
-            <input type="text" name=" old('nombre') ">
-        </label>
-        <br>
-        <label>
-            Descripcion <br>
-            <input type="text" name=" old('descripcion') ">
-        </label>
-        <br>
-        <label>
-            URL <br>
-            <input type="text" name=" old('titular_url') ">
-        </label>
-        <br>
-        <label>
-            Tecnología <br>
-            <input type="text" name=" old('tecnologias') ">
-        </label>
-        <br>
+        
+@include('_form')
     <button> Guardar </button>
     </form>
 </body>

@@ -32,7 +32,9 @@ class PortfolioController extends Controller
 
     public function create()
     {
-        return view('create');
+        return view('create', [
+            'project' => new Project 
+        ]);
     }
 
     public function store(SaveProjectRequest $request)
@@ -76,16 +78,16 @@ class PortfolioController extends Controller
         // return request('nombre');
     }
 
-    public function edit(Project $proyecto)
+    public function edit(Project $project)
     {
-        return view('edit', compact('proyecto'));
+        return view('edit', compact('project'));
     }
 
-    public function update(Project $proyecto, SaveProjectRequest $request)
+    public function update(Project $project, SaveProjectRequest $request)
     {
         // SaveProjectRequest $request
-        $proyecto->update($request->validated());
-        return redirect()->route('projects.show', compact('proyecto'));
+        $project->update($request->validated());
+        return redirect()->route('projects.show', compact('project'));
 
         // return request('nombre');
     }

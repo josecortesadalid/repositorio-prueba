@@ -11,36 +11,12 @@
 
     <h2> Crea un registro de un proyecto </h2>
 
-    @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+    @include('partials.validation-errors')
 
-    <form method="POST" action="{{ route('projects.update', compact('proyecto')) }}">
-        @csrf @method('PATCH')
-        <label>
-            Titulo <br>
-            <input type="text" name="nombre" value="{{ old('nombre', $proyecto->nombre)  }}">
-        </label>
-        <br>
-        <label>
-            Descripcion <br>
-            <input type="text" name="descripcion" value="{{ old('descripcion', $proyecto->descripcion) }}">
-        </label>
-        <br>
-        <label>
-            URL <br>
-            <input type="text" name="titular_url" value="{{ old('titular_url', $proyecto->titular_url) }}">
-        </label>
-        <br>
-        <label>
-            Tecnología <br>
-            <input type="text" name="tecnologias" value="{{ old('tecnologias', $proyecto->tecnologias) }}">
-        </label>
-        <br>
+    <form method="POST" action="{{ route('projects.update', compact('project')) }}">
+        @method('PATCH')
+        @include('_form')
+
     <button> Guardar </button>
     </form>
 </body>
