@@ -10,6 +10,11 @@
 <body>
 
         <h3>{{ $proyecto->nombre }}</h3>
+        <ul>
+            <li>La descripción es: {{ $proyecto->nombre }}</li>
+            <li>La tecnología es: {{ $proyecto->tecnologias }}</li>
+            <li><a href="{{ route('projects.edit', $proyecto->titular_url) }}"> Editar proyecto </a></li>
+        </ul>
 
 
 </body>

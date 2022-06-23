@@ -63,9 +63,12 @@ class PortfolioController extends Controller
         // Project::create( request()->only('nombre', 'descripcion', 'titular_url', 'tecnologias') );
         // Con only no tendríamos ningún problema de asignación masiva
 
+
         // Project::create($fields);
 
-            return $request->validated();
+        $fields = $request->validated();
+        Project::create($fields);
+        return redirect()->route('projects.index');
         // Project::create(request()->all());
 
         // return redirect()->route('projects.index');
@@ -73,9 +76,23 @@ class PortfolioController extends Controller
         // return request('nombre');
     }
 
-    public function edit()
+    public function edit(Project $proyecto)
     {
-        return view('create');
+        return view('edit', compact('proyecto'));
+    }
+
+    public function update(Project $proyecto)
+    {
+        // SaveProjectRequest $request
+        $proyecto->update([
+            'nombre' => request('nombre'), 
+            'descripcion' => request('descripcion'),
+            'titular_url' => request('titular_url'),
+            'tecnologias' => request('tecnologias')          
+        ]);
+        return redirect()->route('projects.show', compact('proyecto'));
+
+        // return request('nombre');
     }
 
 }
