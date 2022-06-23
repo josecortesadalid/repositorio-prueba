@@ -17,6 +17,8 @@
     @forelse($portfolio as $portfolioItem)
 
         <li>{{ $portfolioItem->nombre }}</li>
+        <li> <a href="{{ route('projects.show', $portfolioItem->titular_url) }}"> Ver proyecto </a></li>
+        <br>
         @empty
         <li>No hay proyectos</li>
 

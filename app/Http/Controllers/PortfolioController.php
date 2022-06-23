@@ -20,9 +20,10 @@ class PortfolioController extends Controller
         return view('portafolio',compact('portfolio'));
     }
 
-    public function show(Project $id)
+    public function show(Project $proyecto)
     {
-        return $id;
+        // $proyecto = Project::findOrFail($titular_url);
+        return view('show',compact('proyecto'));
 
         // return view('portafolio.show', [
         //     'portfolio' => Project::findOrFail($id)
@@ -70,6 +71,11 @@ class PortfolioController extends Controller
         // return redirect()->route('projects.index');
 
         // return request('nombre');
+    }
+
+    public function edit()
+    {
+        return view('create');
     }
 
 }
