@@ -10,6 +10,15 @@
 <a href="{{ route('projects.index') }}"> Ir a proyectos </a>
 
     <h2> Crea un registro de un proyecto </h2>
+
+    @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form method="POST" action="{{ route('projects.store') }}">
         @csrf
         <label>
