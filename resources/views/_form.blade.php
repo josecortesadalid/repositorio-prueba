@@ -19,3 +19,5 @@
     <input type="text" name="tecnologias" value="{{ old('tecnologias', $project->tecnologias) }}">
 </label>
 <br>
+
+<button> Guardar </button>

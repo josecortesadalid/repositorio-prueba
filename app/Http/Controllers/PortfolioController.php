@@ -87,9 +87,19 @@ class PortfolioController extends Controller
     {
         // SaveProjectRequest $request
         $project->update($request->validated());
-        return redirect()->route('projects.show', compact('project'));
+        $proyecto = $project;
+        return redirect()->route('projects.show', compact('proyecto'));
 
         // return request('nombre');
+    }
+
+
+    public function destroy(Project $project)
+    {
+        // Project::Destroy($id) // Manera de hacerlo con el id
+        $project->delete();
+        return redirect()->route('projects.index');
+
     }
 
 }

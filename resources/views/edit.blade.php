@@ -15,9 +15,8 @@
 
     <form method="POST" action="{{ route('projects.update', compact('project')) }}">
         @method('PATCH')
-        @include('_form')
+        @include('_form', ['btnText' => 'Actualizar'])
 
-    <button> Guardar </button>
     </form>
 </body>
 </html>

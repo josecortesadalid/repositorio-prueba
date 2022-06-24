@@ -15,8 +15,7 @@
 
     <form method="POST" action="{{ route('projects.store') }}">
         
-@include('_form')
-    <button> Guardar </button>
+@include('_form', ['btnText' => 'Guardar'])
     </form>
 </body>
 </html>

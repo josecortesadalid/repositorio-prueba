@@ -76,4 +76,6 @@ Route::post('/portfolio/store', [PortfolioController::class, 'store'])->name('pr
 Route::get('/portfolio/{project}/editar', [PortfolioController::class, 'edit'])->name('projects.edit');
 Route::patch('/portfolio/{project}', [PortfolioController::class, 'update'])->name('projects.update');
 
+Route::delete('/portfolio/{project}', [PortfolioController::class, 'destroy'])->name('projects.destroy');
+
 Route::get('/portfolio/{proyecto}', [PortfolioController::class, 'show'])->name('projects.show');
