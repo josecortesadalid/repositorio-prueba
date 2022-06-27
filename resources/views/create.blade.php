@@ -9,13 +9,21 @@
 <body>
 <a href="{{ route('projects.index') }}"> Ir a proyectos </a>
 
+
+@if(session('status'))
+        {{ session('status') }}
+
+@else
+
     <h2> Crea un registro de un proyecto </h2>
 
-@include('partials.validation-errors')
+    @include('partials.validation-errors')
 
     <form method="POST" action="{{ route('projects.store') }}">
         
-@include('_form', ['btnText' => 'Guardar'])
+    @include('_form', ['btnText' => 'Guardar'])
     </form>
+@endif
+
 </body>
 </html>

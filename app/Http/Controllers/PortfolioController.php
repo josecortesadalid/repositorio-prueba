@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\DB;
 class PortfolioController extends Controller
 {
 
+    // public function __construct()
+    // {
+    //    $this->middleware('auth'); 
+    // }
+
     public function index()
     {
         // $portfolio = DB::table('projects')->get();
@@ -70,7 +75,8 @@ class PortfolioController extends Controller
 
         $fields = $request->validated();
         Project::create($fields);
-        return redirect()->route('projects.index');
+        // return redirect()->route('projects.index');
+        return back()->with('status', 'El proyecto ha sido creado');
         // Project::create(request()->all());
 
         // return redirect()->route('projects.index');
