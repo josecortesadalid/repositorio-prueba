@@ -7,7 +7,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.active a {
+ a {
+    font-weight: 800;
     color: green;
     text-decoration: none;
 }
