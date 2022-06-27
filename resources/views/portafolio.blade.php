@@ -18,24 +18,34 @@
 </head>
 <body>
 
-<h1>@lang('Portfolio')</h1>
 
-<a href="{{ route('projects.create') }}"> Crear proyecto </a>
+    <div class="container">
 
-<ul>
-    @forelse($portfolio as $portfolioItem)
-
-        <li>{{ $portfolioItem->nombre }}</li>
-        <li> <a href="{{ route('projects.show', $portfolioItem->titular_url) }}"> Ver proyecto </a></li>
-        <br>
-        @empty
-        <li>No hay proyectos</li>
-
-    @endforelse
-    
-</ul>
+    <div class="mx-auto my-5" style="width: 200px;">
+        <h1>@lang('Portfolio')</h1>
+        <a href="{{ route('projects.create') }}"  class="btn btn-primary text-center "> Crear proyecto </a>
+    </div>
 
 
+        <ul class="m-0 p-0">
+            @forelse($portfolio as $portfolioItem)
+
+            <div class="card" >
+                <div class="card-body">
+                    <h5 class="card-title">{{ $portfolioItem->nombre }}</h5>
+                    <p class="card-text">{{ $portfolioItem->descripcion }}</p>
+                    <a href="{{ route('projects.show', $portfolioItem->titular_url) }}" class="btn btn-primary"> Ver proyecto </a>
+                </div>
+            </div>
+
+                <!-- <li>{{ $portfolioItem->nombre }}</li>
+                <li> <a href="{{ route('projects.show', $portfolioItem->titular_url) }}"> Ver proyecto </a></li> -->
+                <br>
+                @empty
+                <li>No hay proyectos</li>
+            @endforelse
+        </ul>
+    </div>
 
 </body>
 </html>

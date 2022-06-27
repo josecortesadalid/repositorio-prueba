@@ -1,26 +1,25 @@
+@include('partials.comun')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div class="container">
 
-        <h3>{{ $proyecto->nombre }}</h3>
-        <ul>
-            <li>La descripción es: {{ $proyecto->descripcion }}</li>
-            <li>La tecnología es: {{ $proyecto->tecnologias }}</li>
-            <li><a href="{{ route('projects.edit', $proyecto->titular_url) }}"> Editar proyecto </a></li>
-        </ul>
 
-        <form method="POST" action="{{ route('projects.destroy', $proyecto) }}">
-            @csrf @method('DELETE')
-            <button>Eliminar</button>
-        </form>
+<a href="{{ route('projects.index') }}" class="btn btn-primary m-5"> Ir a proyectos </a>
 
+    <div class="card m-5 " >
+        <div class="card-body">
+            <h5 class="card-title">{{ $proyecto->nombre }}</h5>
+            <p class="card-text">La descripción es: {{ $proyecto->descripcion }}</p>
+            <p class="card-text">La tecnología es: {{ $proyecto->tecnologias }}</p>
+            <a href="{{ route('projects.edit', $proyecto->titular_url) }}" class="btn btn-primary"> Editar proyecto </a>
+
+    <form method="POST" action="{{ route('projects.destroy', $proyecto) }}">
+    @csrf @method('DELETE')
+    <button class="btn btn-danger mt-2">Eliminar</button>
+    </form>
+    </div>
+    </div>
+
+</div>
 
 </body>
 </html>
