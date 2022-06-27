@@ -16,7 +16,7 @@
             <li><a href="{{ route('projects.edit', $proyecto->titular_url) }}"> Editar proyecto </a></li>
         </ul>
 
-        <form method="POST" action="{{ route('destroy', $proyecto) }}">
+        <form method="POST" action="{{ route('projects.destroy', $proyecto) }}">
             @csrf @method('DELETE')
             <button>Eliminar</button>
         </form>

@@ -70,13 +70,13 @@ Route::any('formulario', function () {
 
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('projects.index');
 
-Route::get('/portfolio/crear', [PortfolioController::class, 'create'])->name('projects.create')->middleware('auth');
-Route::post('/portfolio/store', [PortfolioController::class, 'store'])->name('projects.store')->middleware('auth');
+Route::get('/portfolio/crear', [PortfolioController::class, 'create'])->name('projects.create');
+Route::post('/portfolio/store', [PortfolioController::class, 'store'])->name('projects.store');
 
-Route::get('/portfolio/{project}/editar', [PortfolioController::class, 'edit'])->name('projects.edit')->middleware('auth');
-Route::patch('/portfolio/{project}', [PortfolioController::class, 'update'])->name('projects.update')->middleware('auth');
+Route::get('/portfolio/{project}/editar', [PortfolioController::class, 'edit'])->name('projects.edit');
+Route::patch('/portfolio/{project}', [PortfolioController::class, 'update'])->name('projects.update');
 
-Route::delete('/portfolio/{project}', [PortfolioController::class, 'destroy'])->name('projects.destroy')->middleware('auth');
+Route::delete('/portfolio/{project}', [PortfolioController::class, 'destroy'])->name('projects.destroy');
 
 Route::get('/portfolio/{proyecto}', [PortfolioController::class, 'show'])->name('projects.show');
 
