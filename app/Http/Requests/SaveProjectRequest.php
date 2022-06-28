@@ -35,7 +35,10 @@ class SaveProjectRequest extends FormRequest
     public function messages()
     {
         return [
-            'titular_url.required' => 'Este proyecto necesita un titular URL'
+            'nombre.required' => 'Este proyecto necesita un nombre', 
+            'descripcion.required' => 'Este proyecto necesita una descripción', 
+            'titular_url.required' => 'Este proyecto necesita un titular URL',
+            'tecnologias.required' => 'Este proyecto necesita unas tecnologías'
         ];
     }
 

@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear</title>
-</head>
-<body>
-<a href="{{ route('projects.index') }}"> Ir a proyectos </a>
+@include('partials.comun')
+
+<div class="container">
+    <a href="{{ route('projects.index') }}" class="btn btn-primary mt-5"> Ir a proyectos </a>
 
 
-@if(session('status'))
-        {{ session('status') }}
+    @if(session('status'))
+            {{ session('status') }}
 
-@else
+    @else
 
-    <h2> Crea un registro de un proyecto </h2>
+        <h1 class="my-5 text-center"> Crea un registro de un proyecto </h1>
 
-    @include('partials.validation-errors')
+        <!-- @include('partials.validation-errors') -->
 
-    <form method="POST" action="{{ route('projects.store') }}">
-        
-    @include('_form', ['btnText' => 'Guardar'])
-    </form>
-@endif
-
+        <div class="row">
+        <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+            <form method="POST" action="{{ route('projects.store') }}" class="bg-white shadow rounded p-2 p-md-4">   
+            @include('_form', ['btnText' => 'Guardar'])
+            </form>
+        </div>
+        </div>
+    @endif
+</div>
 </body>
 </html>
