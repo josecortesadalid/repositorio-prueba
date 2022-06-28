@@ -5,7 +5,7 @@
 
 <div class="mx-auto my-5" style="width: 200px;">
     <h1>@lang('Portada')</h1>
-    <a href="{{ route('projects.create') }}"  class="btn btn-primary text-center "> Crear proyecto </a>
+    <a href="{{ route('cms.create') }}"  class="btn btn-primary text-center"> Crear articulo </a>
 </div>
 
 

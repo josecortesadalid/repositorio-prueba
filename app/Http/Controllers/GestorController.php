@@ -16,7 +16,7 @@ class GestorController extends Controller
     {
         $articulos = Articulo::get();
 
-        return view('/',compact('articulos'));
+        return view('cms.portada', compact('articulos'));
     }
 
     /**
@@ -26,7 +26,9 @@ class GestorController extends Controller
      */
     public function create()
     {
-        //
+       return view('cms.create', [
+            'articulo' => new Articulo 
+        ]);
     }
 
     /**
