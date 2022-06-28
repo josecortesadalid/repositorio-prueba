@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveArticleRequest;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
 
@@ -37,9 +38,16 @@ class GestorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveArticleRequest $request)
     {
-        //
+        
+        $fields = $request->validated();
+        // $fields->imagen = base64_encode(file_get_contents($request->file('image')->pat‌​h()));
+        // return $fields->imagen;
+
+        Articulo::create($fields);
+        // return back()->with('status', 'El articulo ha sido creado');
+        return 'hola';
     }
 
     /**

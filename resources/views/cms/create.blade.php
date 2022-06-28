@@ -16,7 +16,7 @@
         <div class="row">
         <div class="col-12 col-sm-10 col-lg-6 mx-auto">
             <form method="POST" action="{{ route('cms.store') }}" class="bg-white shadow rounded p-2 p-md-4">   
-            @include('cms\_formarticulos', ['btnText' => 'Crear'])
+            @include('cms\_formarticulos', ['btnText' => 'Guardar'])
             </form>
         </div>
         </div>
