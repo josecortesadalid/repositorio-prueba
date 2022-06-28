@@ -42,12 +42,13 @@ class GestorController extends Controller
     {
         
         $fields = $request->validated();
+
         // $fields->imagen = base64_encode(file_get_contents($request->file('image')->pat‌​h()));
         // return $fields->imagen;
 
         Articulo::create($fields);
-        // return back()->with('status', 'El articulo ha sido creado');
-        return 'hola';
+        return back()->with('status', 'El articulo ha sido creado');
+
     }
 
     /**
