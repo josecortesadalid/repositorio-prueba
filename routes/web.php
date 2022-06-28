@@ -7,6 +7,7 @@ use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\FormularioController;
 
 use App\Http\Controllers\Carrito;
+use App\Http\Controllers\GestorController;
 use App\Http\Controllers\PortfolioController;
 
 /*
@@ -83,3 +84,6 @@ Route::get('/portfolio/{proyecto}', [PortfolioController::class, 'show'])->name(
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('/cms', GestorController::class);
