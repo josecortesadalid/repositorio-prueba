@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SaveArticleRequest extends FormRequest
 {
@@ -27,8 +28,11 @@ class SaveArticleRequest extends FormRequest
             'titular' => 'required',
             'entradilla' => 'required',
             'cuerpo' => 'required',
-            'imagen_url' => 'required',
-            'titular_url' => 'required'
+            'imagen_url' => [
+                'required',
+                Rule::unique('projects')->ignore( $this->route('project'))
+            ],
+            'titular_url' => ['required', 'unique:articles']
 
         ];
     }
