@@ -1,7 +1,7 @@
 @include('partials.comun')
 
 <div class="container">
-    <a href="{{ route('cms.create') }}" class="btn btn-primary mt-5"> Ir a proyectos </a>
+    <a href="{{ route('cms.index') }}" class="btn btn-primary mt-5"> Ir a la portada </a>
 
 
     @if(session('status'))

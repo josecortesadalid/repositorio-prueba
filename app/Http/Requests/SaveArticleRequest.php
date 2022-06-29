@@ -27,7 +27,7 @@ class SaveArticleRequest extends FormRequest
             'titular' => 'required',
             'entradilla' => 'required',
             'cuerpo' => 'required',
-            'imagen' => 'required',
+            'imagen_url' => 'required',
             'titular_url' => 'required'
 
         ];

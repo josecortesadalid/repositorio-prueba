@@ -9,24 +9,62 @@
 </div>
 
 
-    <ul class="m-0 p-0">
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">{{$articulos[0]->titular}}</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+
+</div>
+
+
+<div class="row mt-5">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">    {{$articulos[1]->titular}}</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">    {{$articulos[2]->titular}}</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card text-center mt-5">
+  <div class="card-body">
+    <h5 class="card-title">    {{$articulos[3]->titular}}</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+    <!-- <ul class="m-0 p-0">
         @forelse($articulos as $articulo)
 
         <div class="card" >
             <div class="card-body">
                 <h5 class="card-title">{{ $articulo->titular }}</h5>
                 <p class="card-text">{{ $articulo->entradilla }}</p>
-                <!-- <a href="{{ route('projects.show', $articulo->titular_url) }}" class="btn btn-primary"> Ver proyecto </a> -->
             </div>
         </div>
 
-            <!-- <li>{{ $portfolioItem->nombre }}</li>
-            <li> <a href="{{ route('projects.show', $portfolioItem->titular_url) }}"> Ver proyecto </a></li> -->
+
             <br>
             @empty
             <li>No hay proyectos</li>
         @endforelse
-    </ul>
+    </ul> -->
 </div>
 
 </body>

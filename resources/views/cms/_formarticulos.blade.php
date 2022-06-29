@@ -32,8 +32,8 @@
 <br>
 
     Imagen <br>
-    <input type="text" name="imagen" value="{{ old('imagen', $articulo->imagen) }}" class="form-control @error('imagen') is-invalid @enderror">
-    @error('imagen')
+    <input type="text" name="imagen_url" value="{{ old('imagen_url', $articulo->imagen_url) }}" class="form-control @error('imagen_url') is-invalid @enderror">
+    @error('imagen_url')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>

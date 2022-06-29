@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveArticleRequest;
 use App\Models\Articulo;
+use App\Models\Portada;
 use Illuminate\Http\Request;
 
 class GestorController extends Controller
@@ -15,7 +16,24 @@ class GestorController extends Controller
      */
     public function index()
     {
-        $articulos = Articulo::get();
+
+        $portada = Portada::where('nombre_portada', 'portada1')->first();
+
+        $posicion1 = $portada->posicion1;
+        $posicion2 = $portada->posicion2;
+        $posicion3 = $portada->posicion3;
+        $posicion4 = $portada->posicion4;
+
+        $articulo1 = Articulo::find($posicion1);
+        $articulo2 = Articulo::find($posicion2);
+        $articulo3 = Articulo::find($posicion3);
+        $articulo4 = Articulo::find($posicion4);
+
+        $articulos = [];
+
+        array_push($articulos, $articulo1, $articulo2, $articulo3, $articulo4);
+
+        // $articulos = Articulo::get();
 
         return view('cms.portada', compact('articulos'));
     }

@@ -9,7 +9,7 @@ class Articulo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titular', 'entradilla', 'cuerpo', 'imagen', 'titular_url'];
+    protected $fillable = ['titular', 'entradilla', 'cuerpo', 'imagen_url', 'titular_url'];
 
     public function getRouteKeyName()
     {
