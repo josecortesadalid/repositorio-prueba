@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveArticleRequest;
+use App\Mail\MensajeRecibido;
 use App\Models\Articulo;
 use App\Models\Portada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GestorController extends Controller
 {
@@ -32,7 +34,7 @@ class GestorController extends Controller
         $articulos = [];
 
         array_push($articulos, $articulo1, $articulo2, $articulo3, $articulo4);
-
+        Mail::to('jose.cortes@adalid.net')->queue(new MensajeRecibido);
         // $articulos = Articulo::get();
 
         return view('cms.portada', compact('articulos'));
@@ -113,4 +115,5 @@ class GestorController extends Controller
     {
         //
     }
+
 }

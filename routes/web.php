@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BoletinesController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\FormularioController;
 
@@ -87,3 +88,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('/cms', GestorController::class);
+
+Route::get('/boletines/enviar_email', [BoletinesController::class, 'enviar_email'])->name('cms.enviar_email');

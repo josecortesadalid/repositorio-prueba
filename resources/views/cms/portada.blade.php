@@ -6,13 +6,17 @@
 <div class="mx-auto my-5" style="width: 200px;">
     <h1>@lang('Portada')</h1>
     <a href="{{ route('cms.create') }}"  class="btn btn-primary text-center"> Crear articulo </a>
+    <a href="{{ route('cms.enviar_email') }}"  class="btn btn-primary text-center"> Enviar un email </a>
 </div>
+
+
+
 
 
 <div class="card text-center">
   <div class="card-body">
     <h5 class="card-title">{{$articulos[0]->titular}}</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">{{$articulos[0]->entradilla}}</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 
@@ -24,7 +28,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">    {{$articulos[1]->titular}}</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">{{$articulos[0]->entradilla}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -33,7 +37,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">    {{$articulos[2]->titular}}</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">{{$articulos[0]->entradilla}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -44,7 +48,7 @@
 <div class="card text-center mt-5">
   <div class="card-body">
     <h5 class="card-title">    {{$articulos[3]->titular}}</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">{{$articulos[0]->entradilla}}</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
