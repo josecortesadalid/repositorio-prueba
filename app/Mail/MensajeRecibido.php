@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Articulo;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -28,6 +29,9 @@ class MensajeRecibido extends Mailable
      */
     public function build()
     {
-        return $this->view('mensaje-recibido');
+
+        $un_articulo = Articulo::find(1);
+
+        return $this->view('mensaje-recibido', compact('un_articulo'));
     }
 }

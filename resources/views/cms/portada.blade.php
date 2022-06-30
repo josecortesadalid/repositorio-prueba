@@ -6,11 +6,8 @@
 <div class="mx-auto my-5" style="width: 200px;">
     <h1>@lang('Portada')</h1>
     <a href="{{ route('cms.create') }}"  class="btn btn-primary text-center"> Crear articulo </a>
-    <a href="{{ route('cms.enviar_email') }}"  class="btn btn-primary text-center"> Enviar un email </a>
+    <a href="{{ route('cms.enviar_email') }}"  class="btn btn-primary text-center mt-3"> Enviar un email </a>
 </div>
-
-
-
 
 
 <div class="card text-center">
