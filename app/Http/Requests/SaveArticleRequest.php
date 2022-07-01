@@ -30,7 +30,8 @@ class SaveArticleRequest extends FormRequest
             'cuerpo' => 'required',
             'imagen' => [
                 'required',
-                Rule::unique('articulos')->ignore( $this->route('cms'))
+                Rule::unique('articulos')->ignore( $this->route('cms')),
+                'dimensions:min_width=320,min_height=100'
             ],
             'titular_url' => ['required', 'unique:articulos']
 

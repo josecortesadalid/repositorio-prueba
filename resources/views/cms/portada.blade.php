@@ -1,7 +1,7 @@
 @include('cms.comuncms')
 
 
-<div class="container">
+<div class="container mb-5">
 
 <div class="mx-auto my-5" style="width: 200px;">
     <h1>@lang('Portada')</h1>
@@ -26,7 +26,7 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <img src="/storage/{{ $articulos[1]->imagen }}" alt="{{ $articulos[1]->titular }}"><br><br>
+        <img src="/storage/{{ $articulos[1]->imagen }}" alt="{{ $articulos[1]->titular }}" class="img-fluid  mx-auto d-block"><br><br>
         <h5 class="card-title">    {{$articulos[1]->titular}}</h5>
         <p class="card-text">{{$articulos[1]->entradilla}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -36,7 +36,7 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <img src="/storage/{{ $articulos[2]->imagen }}" alt="{{ $articulos[2]->titular }}"><br><br>
+        <img src="/storage/{{ $articulos[2]->imagen }}" alt="{{ $articulos[2]->titular }}" class="mx-auto d-block"><br><br>
         <h5 class="card-title">    {{$articulos[2]->titular}}</h5>
         <p class="card-text">{{$articulos[2]->entradilla}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>

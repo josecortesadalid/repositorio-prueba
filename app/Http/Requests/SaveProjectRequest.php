@@ -34,8 +34,8 @@ class SaveProjectRequest extends FormRequest
             ],
             'imagen' => [
                 $this->route('portfolio/crear') ? 'required' : 'nullable', 
-                'mimes:jpeg,png', 
-                'max:2000'
+                // 'mimes:jpeg,png', 
+                // 'max:2000'
             ], 
             'tecnologias' => 'required',
         ];

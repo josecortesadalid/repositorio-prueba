@@ -7,14 +7,14 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
 
     public function __construct()
     {
-       $this->middleware('auth')->except('index', 'show', 'create', 'store', 'edit', 'update'); 
+       $this->middleware('auth')->except('index', 'show', 'create', 'store', 'edit', 'update', 'destroy'); 
     }
 
     public function index()
@@ -102,9 +102,21 @@ class PortfolioController extends Controller
 
     public function update(Project $project, SaveProjectRequest $request)
     {
+        if($request->hasFile('imagen')){
 
+            Storage::delete($project->imagen );
+
+            $project = $project->fill( $request->validated() ); 
+            //no queremos un nuevo proyecto, queremos utilizar el que estamos editando
+            // fill rellena todos los campos sin guardarlos en la db
+            $project->imagen = $request->file('imagen')->store('images');
+            $project->save();
+            // return redirect()->route('projects.index')->with('status', 'proyecto creado');
+        }else{
+            $project->update( array_filter($request->validated())); 
+        }
         // SaveProjectRequest $request
-        $project->update( array_filter($request->validated()));
+
         $proyecto = $project;
         return redirect()->route('projects.show', compact('proyecto'));
 
@@ -114,6 +126,7 @@ class PortfolioController extends Controller
 
     public function destroy(Project $project)
     {
+        Storage::delete($project->imagen );
         // Project::Destroy($id) // Manera de hacerlo con el id
         $project->delete();
         return redirect()->route('projects.index');

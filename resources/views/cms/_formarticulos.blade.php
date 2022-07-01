@@ -37,6 +37,11 @@
     <label for="formFile" class="form-label">Imagen</label>
     <input class="form-control" type="file" name="imagen" id="formFile">
     </div>
+    @error('imagen')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
 
     <!-- <input type="text" name="imagen" value="{{ old('imagen', $articulo->imagen) }}" class="form-control @error('imagen') is-invalid @enderror">
     @error('imagen')
