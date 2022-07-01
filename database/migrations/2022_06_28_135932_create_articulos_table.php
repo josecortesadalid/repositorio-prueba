@@ -18,7 +18,7 @@ class CreateArticulosTable extends Migration
             $table->string('titular');
             $table->string('entradilla');
             $table->longText('cuerpo');
-            $table->string('imagen_url');
+            $table->string('imagen');
             $table->string('titular_url')->unique();
             $table->timestamps();
         });

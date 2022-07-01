@@ -1,5 +1,10 @@
 @csrf
 
+    <div class="mb-3">
+    <label for="formFile" class="form-label">Imagen</label>
+    <input class="form-control" type="file" name="imagen" id="formFile">
+    </div>
+
     Titulo <br>
     <input type="text" name="nombre" value="{{ old('nombre', $project->nombre) }}" class="form-control @error('nombre') is-invalid @enderror">
         

@@ -15,7 +15,12 @@
 
         <div class="row">
         <div class="col-12 col-sm-10 col-lg-6 mx-auto">
-            <form method="POST" action="{{ route('projects.store') }}" class="bg-white shadow rounded p-2 p-md-4">   
+            <form 
+            method="POST" 
+            action="{{ route('projects.store') }}" 
+            class="bg-white shadow rounded p-2 p-md-4"
+            enctype="multipart/form-data"
+            >   
             @include('_form', ['btnText' => 'Guardar'])
             </form>
         </div>

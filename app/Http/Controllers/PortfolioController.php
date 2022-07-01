@@ -14,7 +14,7 @@ class PortfolioController extends Controller
 
     public function __construct()
     {
-       $this->middleware('auth')->except('index', 'show', 'create', 'store'); 
+       $this->middleware('auth')->except('index', 'show', 'create', 'store', 'edit', 'update'); 
     }
 
     public function index()
@@ -73,10 +73,21 @@ class PortfolioController extends Controller
 
         // Project::create($fields);
 
-        $fields = $request->validated();
-        Project::create($fields);
-        // return redirect()->route('projects.index');
-        return back()->with('status', 'El proyecto ha sido creado');
+        $project = new Project( $request->validated() );
+        $project->imagen = $request->file('imagen')->store('images');
+        $project->save();
+
+
+        // Project::create( $request->validated() );
+        // $project->image = $request
+
+        //---------------
+        // $fields = $request->validated();
+        // Project::create($fields);
+        return redirect()->route('projects.index')->with('status', 'proyecto creado');
+        // return back()->with('status', 'El proyecto ha sido creado');
+//----------------
+ 
         // Project::create(request()->all());
 
         // return redirect()->route('projects.index');
@@ -91,8 +102,9 @@ class PortfolioController extends Controller
 
     public function update(Project $project, SaveProjectRequest $request)
     {
+
         // SaveProjectRequest $request
-        $project->update($request->validated());
+        $project->update( array_filter($request->validated()));
         $proyecto = $project;
         return redirect()->route('projects.show', compact('proyecto'));
 

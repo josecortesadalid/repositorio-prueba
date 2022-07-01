@@ -32,12 +32,18 @@
 <br>
 
     Imagen <br>
-    <input type="text" name="imagen_url" value="{{ old('imagen_url', $articulo->imagen_url) }}" class="form-control @error('imagen_url') is-invalid @enderror">
-    @error('imagen_url')
+
+    <div class="mb-3">
+    <label for="formFile" class="form-label">Imagen</label>
+    <input class="form-control" type="file" name="imagen" id="formFile">
+    </div>
+
+    <!-- <input type="text" name="imagen" value="{{ old('imagen', $articulo->imagen) }}" class="form-control @error('imagen') is-invalid @enderror">
+    @error('imagen')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
-    @enderror
+    @enderror -->
 
 <br>
 

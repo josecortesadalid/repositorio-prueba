@@ -32,6 +32,11 @@ class SaveProjectRequest extends FormRequest
                 'required', 
                 Rule::unique('projects')->ignore( $this->route('project'))
             ],
+            'imagen' => [
+                $this->route('portfolio/crear') ? 'required' : 'nullable', 
+                'mimes:jpeg,png', 
+                'max:2000'
+            ], 
             'tecnologias' => 'required',
         ];
     }

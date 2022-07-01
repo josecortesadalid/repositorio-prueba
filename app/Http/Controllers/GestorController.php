@@ -59,13 +59,16 @@ class GestorController extends Controller
      */
     public function store(SaveArticleRequest $request)
     {
+
         
         $fields = $request->validated();
 
         // $fields->imagen = base64_encode(file_get_contents($request->file('image')->pat‌​h()));
         // return $fields->imagen;
 
-        Articulo::create($fields);
+        $articulo = Articulo::create($fields);
+        $articulo->imagen = $request->file('imagen')->store('images');
+        $articulo->save();
         return back()->with('status', 'El articulo ha sido creado');
 
     }

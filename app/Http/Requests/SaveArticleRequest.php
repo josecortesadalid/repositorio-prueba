@@ -28,11 +28,11 @@ class SaveArticleRequest extends FormRequest
             'titular' => 'required',
             'entradilla' => 'required',
             'cuerpo' => 'required',
-            'imagen_url' => [
+            'imagen' => [
                 'required',
                 Rule::unique('projects')->ignore( $this->route('project'))
             ],
-            'titular_url' => ['required', 'unique:articles']
+            'titular_url' => ['required', 'unique:articulos']
 
         ];
     }
