@@ -26,9 +26,9 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <img src="/storage/{{ $articulos[0]->imagen }}" alt="{{ $articulos[0]->titular }}"><br><br>
+        <img src="/storage/{{ $articulos[1]->imagen }}" alt="{{ $articulos[1]->titular }}"><br><br>
         <h5 class="card-title">    {{$articulos[1]->titular}}</h5>
-        <p class="card-text">{{$articulos[0]->entradilla}}</p>
+        <p class="card-text">{{$articulos[1]->entradilla}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -36,9 +36,9 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <img src="/storage/{{ $articulos[0]->imagen }}" alt="{{ $articulos[0]->titular }}"><br><br>
+        <img src="/storage/{{ $articulos[2]->imagen }}" alt="{{ $articulos[2]->titular }}"><br><br>
         <h5 class="card-title">    {{$articulos[2]->titular}}</h5>
-        <p class="card-text">{{$articulos[0]->entradilla}}</p>
+        <p class="card-text">{{$articulos[2]->entradilla}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -48,9 +48,9 @@
 
 <div class="card text-center mt-5">
   <div class="card-body">
-        <img src="/storage/{{ $articulos[0]->imagen }}" alt="{{ $articulos[0]->titular }}"><br><br>
+        <img src="/storage/{{ $articulos[3]->imagen }}" alt="{{ $articulos[3]->titular }}"><br><br>
     <h5 class="card-title">    {{$articulos[3]->titular}}</h5>
-    <p class="card-text">{{$articulos[0]->entradilla}}</p>
+    <p class="card-text">{{$articulos[3]->entradilla}}</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
