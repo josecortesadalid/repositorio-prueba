@@ -1,7 +1,7 @@
 @csrf
 
 @if($project->imagen)
-                    <img src="/storage/{{ $project->imagen }}" alt="{{ $project->nombre }}" class="mb-4">
+                    <img src="/storage/{{ $project->imagen }}" alt="{{ $project->nombre }}" class="mb-4" style="height:150px; object-fit: cover">
                     @endif
 
     <div class="mb-3">

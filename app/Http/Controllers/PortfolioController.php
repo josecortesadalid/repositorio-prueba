@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProjectSaved;
 use App\Http\Requests\SaveProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+// use Intervention\Image\Image;
+
+
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PortfolioController extends Controller
 {
@@ -44,55 +50,13 @@ class PortfolioController extends Controller
 
     public function store(SaveProjectRequest $request)
     {
-        // request()->save();
-        // $nombre = request('nombre');
-        // $descripcion = request('descripcion');
-        // $titular_url = request('titular_url');
-        // $tecnologias = request('tecnologias');
-
-        // Project::create([
-        //     'nombre' => $nombre,
-        //     'descripcion' => $descripcion, 
-        //     'titular_url' => $titular_url,
-        //     'tecnologias' => $tecnologias
-        // ]);
-
-        
-
-        // $fields = request()->validate([
-        //     'nombre' => 'required',
-        //     'descripcion' => 'required',
-        //     'titular_url' => 'required',
-        //     'tecnologias' => 'required',
-
-        // ]);
-
-        // Project::create( request()->only('nombre', 'descripcion', 'titular_url', 'tecnologias') );
-        // Con only no tendríamos ningún problema de asignación masiva
-
-
-        // Project::create($fields);
-
         $project = new Project( $request->validated() );
         $project->imagen = $request->file('imagen')->store('images');
         $project->save();
 
-
-        // Project::create( $request->validated() );
-        // $project->image = $request
-
-        //---------------
-        // $fields = $request->validated();
-        // Project::create($fields);
+        ProjectSaved::dispatch($project);
+        
         return redirect()->route('projects.index')->with('status', 'proyecto creado');
-        // return back()->with('status', 'El proyecto ha sido creado');
-//----------------
- 
-        // Project::create(request()->all());
-
-        // return redirect()->route('projects.index');
-
-        // return request('nombre');
     }
 
     public function edit(Project $project)
@@ -105,29 +69,23 @@ class PortfolioController extends Controller
         if($request->hasFile('imagen')){
 
             Storage::delete($project->imagen );
-
             $project = $project->fill( $request->validated() ); 
-            //no queremos un nuevo proyecto, queremos utilizar el que estamos editando
-            // fill rellena todos los campos sin guardarlos en la db
             $project->imagen = $request->file('imagen')->store('images');
             $project->save();
-            // return redirect()->route('projects.index')->with('status', 'proyecto creado');
+
+            ProjectSaved::dispatch($project);
+
         }else{
             $project->update( array_filter($request->validated())); 
         }
-        // SaveProjectRequest $request
-
         $proyecto = $project;
         return redirect()->route('projects.show', compact('proyecto'));
-
-        // return request('nombre');
     }
 
 
     public function destroy(Project $project)
     {
         Storage::delete($project->imagen );
-        // Project::Destroy($id) // Manera de hacerlo con el id
         $project->delete();
         return redirect()->route('projects.index');
 

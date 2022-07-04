@@ -35,7 +35,7 @@
                     <h5 class="card-title">{{ $portfolioItem->nombre }}</h5>
                     <p class="card-text">{{ $portfolioItem->descripcion }}</p>
                     @if($portfolioItem->imagen)
-                    <img src="/storage/{{ $portfolioItem->imagen }}" alt="{{ $portfolioItem->nombre }}">
+                    <img src="/storage/{{ $portfolioItem->imagen }}" alt="{{ $portfolioItem->nombre }}" style="height:200px; object-fit: cover">
                     @endif
                     <a href="{{ route('projects.show', $portfolioItem->titular_url) }}" class="btn btn-primary"> Ver proyecto </a>
                 </div>
