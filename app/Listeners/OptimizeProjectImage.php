@@ -3,12 +3,13 @@
 namespace App\Listeners;
 
 use App\Events\ProjectSaved;
+use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class OptimizeProjectImage
+class OptimizeProjectImage implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -28,9 +29,10 @@ class OptimizeProjectImage
      */
     public function handle(ProjectSaved $event) 
     {
+
         $image = Image::make(Storage::get($event->project->imagen)); 
         $image
-        ->widen(400)
+        ->widen(800)
         ->limitColors(255)
         ->encode();
 
