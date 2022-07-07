@@ -16,7 +16,7 @@ class Project extends Model
     return 'titular_url';
 }
 
-    public function category($value='')  // $project->category
+    public function category()  // $project->category
 {
     return $this->belongsTo(Category::class);
     // Debido a que el modelo se llama category y estamos referenciando el id, Laravel usa por defecto el 'category_id'
