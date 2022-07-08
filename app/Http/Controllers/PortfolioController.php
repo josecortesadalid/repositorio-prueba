@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ProjectSaved;
 use App\Http\Requests\SaveProjectRequest;
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -61,7 +62,10 @@ class PortfolioController extends Controller
 
     public function edit(Project $project)
     {
-        return view('edit', compact('project'));
+        return view('edit', [
+            'project' => $project,
+            'categories' => Category::pluck('name', 'id')
+        ]);
     }
 
     public function update(Project $project, SaveProjectRequest $request)

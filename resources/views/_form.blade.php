@@ -9,6 +9,15 @@
     <input class="form-control" type="file" name="imagen" id="formFile">
     </div>
 
+    <div class="form-group">
+        <label for="category_id">Categoria de proyecto</label>
+        <select 
+        name="category_id" 
+        id="category_id"
+        class="form-control "
+        ></select>
+    </div>
+
     Titulo <br>
     <input type="text" name="nombre" value="{{ old('nombre', $project->nombre) }}" class="form-control @error('nombre') is-invalid @enderror">
         
