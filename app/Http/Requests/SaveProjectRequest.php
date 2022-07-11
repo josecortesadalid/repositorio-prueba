@@ -32,6 +32,8 @@ class SaveProjectRequest extends FormRequest
                 'required', 
                 Rule::unique('projects')->ignore( $this->route('project'))
             ],
+            'category_id' => ['required',
+        'exist:categories, id'],
             'imagen' => [
                 $this->route('portfolio/crear') ? 'required' : 'nullable', 
                 // 'mimes:jpeg,png', 

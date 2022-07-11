@@ -15,7 +15,17 @@
         name="category_id" 
         id="category_id"
         class="form-control "
-        ></select>
+        >
+    
+        <option value="">Seleccione</option>
+        @foreach ($categories as $id => $name )
+            <option value="{{ $id }}" 
+            @if ($id === $project->category_id)
+                selected
+            @endif
+            > {{ $name }} </option>
+        @endforeach
+        </select>
     </div>
 
     Titulo <br>

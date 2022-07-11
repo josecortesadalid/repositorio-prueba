@@ -45,7 +45,7 @@ class PortfolioController extends Controller
     public function create()
     {
         return view('create', [
-            'project' => new Project 
+            'project' => new Project,
         ]);
     }
 
