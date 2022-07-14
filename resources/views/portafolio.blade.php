@@ -23,7 +23,9 @@
 
     <div class="mx-auto my-5" style="width: 200px;">
         <h1>@lang('Portfolio')</h1>
+        @can('create-projects')
         <a href="{{ route('projects.create') }}"  class="btn btn-primary text-center "> Crear proyecto </a>
+        @endcan
     </div>
 
 
