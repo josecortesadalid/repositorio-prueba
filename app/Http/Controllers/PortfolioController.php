@@ -9,6 +9,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 // use Intervention\Image\Image;
 
@@ -46,6 +47,8 @@ class PortfolioController extends Controller
 
     public function create()
     {
+        $this->authorize('create-projects');
+
         return view('create', [
             'project' => new Project,
             'categories' => Category::pluck('name', 'id')

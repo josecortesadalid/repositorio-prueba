@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class SaveProjectRequest extends FormRequest
 {
@@ -14,7 +16,7 @@ class SaveProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return true; 
+        return Gate::allows('create-projects'); 
         // $this->user;
     }
 
@@ -32,8 +34,8 @@ class SaveProjectRequest extends FormRequest
                 'required', 
                 Rule::unique('projects')->ignore( $this->route('project'))
             ],
-            'category_id' => ['required',
-        'exist:categories, id'],
+            'category_id' => ['required'],
+            // , 'exist:categories, id'
             'imagen' => [
                 $this->route('portfolio/crear') ? 'required' : 'nullable', 
                 // 'mimes:jpeg,png', 
