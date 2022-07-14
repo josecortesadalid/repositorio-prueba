@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 class ExampleTest extends TestCase
 {
     /**
@@ -12,10 +14,22 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+
+    public function test_can_see_all_the_projects()
     {
-        $response = $this->get('/');
-//prueba
-        $response->assertStatus(200);
-    }
+
+    $project = Project::factory()->make();
+    dd($project->titular_url);
+    $user = User::factory()->times(3)->make([
+        'nombre' => 'Nombre de prueba',
+    ]);
+
+    $response = $this->get(route('projects.index')); 
+    $response->assertStatus(200); 
+    $response->assertViewIs('portafolio'); 
+    $response->assertViewHas('portfolio'); 
+    $response->assertSee($project->nombre); 
+
+}
+    
 }
