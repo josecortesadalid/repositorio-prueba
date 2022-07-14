@@ -10,6 +10,7 @@ use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\Carrito;
 use App\Http\Controllers\GestorController;
 use App\Http\Controllers\PortfolioController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ use App\Http\Controllers\PortfolioController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+DB::listen(function($query){
+    var_dump($query->sql);
+});
 
 Route::get('/', function () {
     // return view('welcome');

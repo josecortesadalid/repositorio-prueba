@@ -27,9 +27,11 @@ class PortfolioController extends Controller
     public function index()
     {
         // $portfolio = DB::table('projects')->get();
-        $portfolio = Project::get();
+        // $portfolio = Project::get();
 
-        return view('portafolio',compact('portfolio'));
+        return view('portafolio', [
+            'portfolio' => Project::with('category')->get()
+        ]);
     }
 
     public function show(Project $proyecto)
@@ -46,6 +48,7 @@ class PortfolioController extends Controller
     {
         return view('create', [
             'project' => new Project,
+            'categories' => Category::pluck('name', 'id')
         ]);
     }
 

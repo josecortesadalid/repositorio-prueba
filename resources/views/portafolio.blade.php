@@ -38,6 +38,9 @@
                     <img src="/storage/{{ $portfolioItem->imagen }}" alt="{{ $portfolioItem->nombre }}" style="height:200px; object-fit: cover">
                     @endif
                     <a href="{{ route('projects.show', $portfolioItem->titular_url) }}" class="btn btn-primary"> Ver proyecto </a>
+                    @if ($portfolioItem->category)
+                    <a href="#" class="btn btn-secondary"> {{ $portfolioItem->category->name }} </a>                        
+                    @endif
                 </div>
             </div>
 

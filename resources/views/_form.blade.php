@@ -20,10 +20,11 @@
         <option value="">Seleccione</option>
         @foreach ($categories as $id => $name )
             <option value="{{ $id }}" 
-            @if ($id === $project->category_id)
+            @if ($id == old('category_id', $project->category_id)) 
                 selected
             @endif
-            > {{ $name }} </option>
+            > {{ $name }} </option> 
+            <!-- Ponemos solo 2 iguales porque 3 comprobarían el tipo de dato y nos daría error -->
         @endforeach
         </select>
     </div>
