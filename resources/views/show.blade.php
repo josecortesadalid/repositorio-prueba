@@ -12,10 +12,12 @@
             <p class="card-text">La tecnología es: {{ $proyecto->tecnologias }}</p>
             <a href="{{ route('projects.edit', $proyecto->titular_url) }}" class="btn btn-primary"> Editar proyecto </a>
 
+    @can('delete', $proyecto)
     <form method="POST" action="{{ route('projects.destroy', $proyecto) }}">
     @csrf @method('DELETE')
     <button class="btn btn-danger mt-2">Eliminar</button>
     </form>
+    @endcan
     </div>
     </div>
 

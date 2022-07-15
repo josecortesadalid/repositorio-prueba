@@ -31,6 +31,7 @@ class PortfolioController extends Controller
         // $portfolio = Project::get();
 
         return view('portafolio', [
+            'newProject' => new Project, 
             'portfolio' => Project::with('category')->get()
         ]);
     }
@@ -47,7 +48,7 @@ class PortfolioController extends Controller
 
     public function create()
     {
-        $this->authorize('create-projects');
+        $this->authorize('create', new Project);
 
         return view('create', [
             'project' => new Project,
@@ -57,7 +58,12 @@ class PortfolioController extends Controller
 
     public function store(SaveProjectRequest $request)
     {
+
+
         $project = new Project( $request->validated() );
+
+        $this->authorize('create', $project);
+
         $project->imagen = $request->file('imagen')->store('images');
         $project->save();
 
@@ -68,6 +74,9 @@ class PortfolioController extends Controller
 
     public function edit(Project $project)
     {
+
+        $this->authorize('update', $project);
+
         return view('edit', [
             'project' => $project,
             'categories' => Category::pluck('name', 'id')
@@ -76,6 +85,8 @@ class PortfolioController extends Controller
 
     public function update(Project $project, SaveProjectRequest $request)
     {
+        $this->authorize('update', $project);
+
         if($request->hasFile('imagen')){
 
             Storage::delete($project->imagen );
@@ -95,6 +106,7 @@ class PortfolioController extends Controller
 
     public function destroy(Project $project)
     {
+        $this->authorize('delete', $project);
         Storage::delete($project->imagen );
         $project->delete();
         return redirect()->route('projects.index');

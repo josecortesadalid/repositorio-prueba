@@ -23,15 +23,15 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-DB::listen(function($query){
-    var_dump($query->sql);
-});
+// DB::listen(function($query){
+//     var_dump($query->sql);
+// });
 
 Route::get('/', function () {
-    // return view('welcome');
-    echo "<a href='" . route('articulos') . "'>Articulos 1</a><br>";
-    echo "<a href='" . route('articulos') . "'>Articulos 2</a><br>";
-    echo "<a href='" . route('articulos') . "'>Articulos 3</a><br>";
+    return view('welcome');
+    // echo "<a href='" . route('articulos') . "'>Articulos 1</a><br>";
+    // echo "<a href='" . route('articulos') . "'>Articulos 2</a><br>";
+    // echo "<a href='" . route('articulos') . "'>Articulos 3</a><br>";
 });
 
 
