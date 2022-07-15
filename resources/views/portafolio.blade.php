@@ -53,6 +53,33 @@
                 <li>No hay proyectos</li>
             @endforelse
         </ul>
+<br><br><br>
+
+@can('view-deleted-projects')
+    <h2> Proyectos que se han eliminado </h2>
+        <ul>
+            @foreach ($deletedProjects as $deletedProject)
+                <li> {{ $deletedProject->nombre }} 
+
+                @can('restore', $deletedProject)
+                <form method="POST" action="{{ route('projects.restore', $deletedProject) }}">
+                    @csrf @method('PATCH')
+                    <button class="btn btn-sm btn-info">Restaurar</button>
+                </form>
+                @endcan
+                @can('forceDelete', $deletedProject)
+                <form method="POST" action="{{ route('projects.restore', $deletedProject) }}">
+                    @csrf @method('DELETE')
+                    <button class="btn btn-sm btn-danger">Eliminar permanentemente</button>    
+                </form>                
+                @endcan
+
+                </li>
+            @endforeach
+        </ul>
+@endcan
+
+
     </div>
 
 </body>

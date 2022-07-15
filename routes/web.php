@@ -95,3 +95,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/cms', GestorController::class);
 
 Route::get('/boletines/enviar_email', [BoletinesController::class, 'enviar_email'])->name('cms.enviar_email');
+
+Route::patch('/portfolio/{project}/restore', [PortfolioController::class, 'restore'])->name('projects.restore');
+Route::delete('/portfolio/{project}/forceDelete', [PortfolioController::class, 'forceDelete'])->name('projects.forceDelete');

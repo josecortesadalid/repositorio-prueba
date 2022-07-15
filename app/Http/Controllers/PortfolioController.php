@@ -30,9 +30,12 @@ class PortfolioController extends Controller
         // $portfolio = DB::table('projects')->get();
         // $portfolio = Project::get();
 
+        // return Project::onlyTrashed()->with('category')->latest()->paginate();
+
         return view('portafolio', [
             'newProject' => new Project, 
-            'portfolio' => Project::with('category')->get()
+            'portfolio' => Project::with('category')->get(),
+            'deletedProjects' => Project::onlyTrashed()->get()
         ]);
     }
 
@@ -107,8 +110,28 @@ class PortfolioController extends Controller
     public function destroy(Project $project)
     {
         $this->authorize('delete', $project);
-        Storage::delete($project->imagen );
+        // Storage::delete($project->imagen ); eliminamos el borrar imagen debido a la posibilidad de que el cliente quiera restaurar el proyecto. La ponemos en el forceDelete
         $project->delete();
+        return redirect()->route('projects.index');
+
+    }
+    
+    public function restore($projectUrl)
+    {
+        $project = Project::withTrashed()->wheretitular_url($projectUrl)->firstOrFail();
+        $this->authorize('restore', $project);
+        // Storage::delete($project->imagen ); eliminamos el borrar imagen debido a la posibilidad de que el cliente quiera restaurar el proyecto. La ponemos en el forceDelete
+        $project->restore();
+        return redirect()->route('projects.index');
+
+    }
+    public function forceDelete(Project $projectUrl)
+    {
+        $project = Project::withTrashed()->wheretitular_url($projectUrl)->firstOrFail();
+        $this->authorize('forceDelete', $project);
+        Storage::delete($project->imagen );
+
+        $project->forceDelete();
         return redirect()->route('projects.index');
 
     }
