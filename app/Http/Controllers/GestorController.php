@@ -7,6 +7,7 @@ use App\Mail\MensajeRecibido;
 use App\Models\Articulo;
 use App\Models\Portada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class GestorController extends Controller
@@ -19,7 +20,8 @@ class GestorController extends Controller
     public function index()
     {
 
-        $portada = Portada::where('nombre_portada', 'portada1')->first();
+        // $portada = Portada::where('nombre_portada', 'portada1')->first();
+        $portada = DB::table('portadas')->where('nombre_portada', 'portada1')->first();
 
         $posicion1 = $portada->posicion1;
         $posicion2 = $portada->posicion2;
