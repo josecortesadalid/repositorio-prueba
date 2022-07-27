@@ -28,10 +28,10 @@ class GestorController extends Controller
         $posicion3 = $portada->posicion3;
         $posicion4 = $portada->posicion4;
 
-        $articulo1 = Articulo::find($posicion1);
-        $articulo2 = Articulo::find($posicion2);
-        $articulo3 = Articulo::find($posicion3);
-        $articulo4 = Articulo::find($posicion4);
+        $articulo1 = DB::table('articulos')->find($posicion1);
+        $articulo2 = DB::table('articulos')->find($posicion2);
+        $articulo3 = DB::table('articulos')->find($posicion3);
+        $articulo4 = DB::table('articulos')->find($posicion4);
 
         $articulos = [];
 
@@ -83,7 +83,10 @@ class GestorController extends Controller
      */
     public function show($id)
     {
-        //
+        // $articulo = Articulo::find($id);
+        $articulo = Articulo::findOrFail($id);
+
+        return $articulo;
     }
 
     /**
@@ -117,7 +120,9 @@ class GestorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Articulo::findOrFail($id)->delete();
+
+        return Articulo::all();
     }
 
 }
