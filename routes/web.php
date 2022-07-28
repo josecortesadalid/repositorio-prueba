@@ -10,6 +10,8 @@ use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\Carrito;
 use App\Http\Controllers\GestorController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -87,6 +89,8 @@ Route::delete('/portfolio/{project}', [PortfolioController::class, 'destroy'])->
 
 Route::get('/portfolio/{proyecto}', [PortfolioController::class, 'show'])->name('projects.show');
 
+Route::get('/a/logout', [LoginController::class, 'logout']);
+
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -98,3 +102,7 @@ Route::get('/boletines/enviar_email', [BoletinesController::class, 'enviar_email
 
 Route::patch('/portfolio/{project}/restore', [PortfolioController::class, 'restore'])->name('projects.restore');
 Route::delete('/portfolio/{project}/forceDelete', [PortfolioController::class, 'forceDelete'])->name('projects.forceDelete');
+
+// Route::get('/login', [LoginController::class, 'showLoginForm']);
+
+Route::get('/usuarios', [UsersController::class, 'index'])->name('users.index');

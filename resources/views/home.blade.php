@@ -1,6 +1,6 @@
-@extends('app')
 
-@section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     @auth
-                    {{ auth()->user()->name }}
+                    {{ auth()->user()->name }} 
                     @endauth
                 </div>
                 <div class="card-body">
@@ -28,15 +28,24 @@
             
                 </div>
 
-                    
+ @if (auth()->check())
+    <a href="/a/logout"> Cerrar sesión
+    </a>  
+ @endif      
+ 
+ 
+ @if(auth()->check())
+Usuario autenticado
+@endif
 
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    
 
             </div>
         </div>
     </div>
 </div>
-@endsection
+
