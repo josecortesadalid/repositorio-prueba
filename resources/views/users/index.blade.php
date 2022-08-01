@@ -21,6 +21,8 @@
 
 <div class="container">
 
+<a href="/usuarios/{{ auth()->id() }}/editar"> Mi cuenta </a>
+
 <h2 class="m-5"> Usuarios con sus roles </h2>
 
     <table class="table m-5">
@@ -36,14 +38,25 @@
         @foreach ($users as $user)
             <tr>
 
-            <td> {{ $user->name }} </td>
-                        <td> 
-                            @foreach ($user->roles as $role)
-                            <p><b> {{ $role->display_name }} </b></p>
-                            @endforeach
-                        </td>
+                <td> {{ $user->name }} </td>
+                <td> 
+                    @foreach ($user->roles as $role)
+                    <p><b> {{ $role->display_name }} </b></p>
+                    @endforeach
+                </td>
+
+                <td>        
+                    <a href="{{ route('usuarios.edit', $user->id) }}" class="btn btn-primary"> Editar usuario </a>
+                </td>
+                <td>
+                    <form method="POST" action="{{ route('usuarios.destroy', $user->id) }}">
+                    @csrf @method('DELETE')
+                    <button class="btn btn-danger mt-2">Eliminar</button>
+                    </form>
+                </td>
+
             </tr>
-            @endforeach
+        @endforeach
         </tbody>
     </table>
 

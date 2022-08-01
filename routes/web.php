@@ -11,7 +11,7 @@ use App\Http\Controllers\Carrito;
 use App\Http\Controllers\GestorController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 
@@ -98,6 +98,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('/cms', GestorController::class);
+Route::resource('/usuarios', UserController::class);
 
 Route::get('/boletines/enviar_email', [BoletinesController::class, 'enviar_email'])->name('cms.enviar_email');
 
@@ -106,7 +107,8 @@ Route::delete('/portfolio/{project}/forceDelete', [PortfolioController::class, '
 
 // Route::get('/login', [LoginController::class, 'showLoginForm']);
 
-Route::get('/usuarios', [UsersController::class, 'index'])->name('users.index');
+
+
 
 
 Route::get('/roles', function(){
