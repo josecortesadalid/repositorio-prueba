@@ -46,4 +46,31 @@ class User extends Authenticatable
     // {
     //     return $this->role === $role;
     // }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'assigned_roles'); // en el segundo parámetro, le decimos a Eloquent cual es nuestra tabla pivote
+    }
+
+    public function hasRoles(array $roles)
+    {
+        foreach($roles as $userRole){
+
+
+            foreach($userRole->name as $role){
+                if($this->roles->name === $role){
+                    return true;
+                }
+            }
+
+
+        }
+        return false;
+
+    }
+
+
+
+
+
 }

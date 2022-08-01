@@ -15,8 +15,9 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique(); // llave interna para verificar los roles
-            $table->string('name'); // el nombre que veríamos en la aplicación
+            $table->string('name')->unique(); // llave interna para verificar los roles
+            $table->string('display_name')->nullable(); // el nombre que veríamos en la aplicación
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

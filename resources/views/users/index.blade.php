@@ -1,15 +1,58 @@
-<h1>Usuarios</h1>
 
-<ul class="m-0 p-0">
-    @foreach($users as $user)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-        <div class="card" >
-            <div class="card-body">
-                <h5 class="card-title">{{ $user->name }}</h5>
-                <p class="card-text">{{ $user->email }}</p>
-                <p class="card-text">{{ $user->role }}</p>
-            </div>
-        </div>
-    @foreach
+    <tdnk rel="dns-prefetch" href="//fonts.gstatic.com">
+    <tdnk href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-</ul>
+    <!-- Styles -->
+    <!-- <tdnk href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+    <tdnk rel="stylesheet" href=" {{ mix('css/app.css')  }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+
+<div class="container">
+
+<h2 class="m-5"> Usuarios con sus roles </h2>
+
+    <table class="table m-5">
+        <thead>
+            <tr>
+
+            <th scope="col">nombre</th>
+            <th scope="col">rol</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        @foreach ($users as $user)
+            <tr>
+
+            <td> {{ $user->name }} </td>
+                        <td> 
+                            @foreach ($user->roles as $role)
+                            <p><b> {{ $role->display_name }} </b></p>
+                            @endforeach
+                        </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+
+</body>
+</html>
+

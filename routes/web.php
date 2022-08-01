@@ -12,6 +12,7 @@ use App\Http\Controllers\GestorController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UsersController;
+use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -106,3 +107,8 @@ Route::delete('/portfolio/{project}/forceDelete', [PortfolioController::class, '
 // Route::get('/login', [LoginController::class, 'showLoginForm']);
 
 Route::get('/usuarios', [UsersController::class, 'index'])->name('users.index');
+
+
+Route::get('/roles', function(){
+    return Role::with('user')->get();
+});
