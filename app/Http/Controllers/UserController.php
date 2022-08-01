@@ -68,6 +68,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $this->authorize($user); // Para usar la política
         return view('users.edit', compact('user'));
     }
 
