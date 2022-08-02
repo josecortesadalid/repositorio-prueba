@@ -41,7 +41,7 @@
                 <td> {{ $user->name }} </td>
                 <td> 
                     @foreach ($user->roles as $role)
-                    <p><b> {{ $role->display_name }} </b></p>
+                    <p><b> {{ $role->pluck('display_name')->implode(' - ') }} </b></p>
                     @endforeach
                 </td>
 

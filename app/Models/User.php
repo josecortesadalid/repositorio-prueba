@@ -54,21 +54,33 @@ class User extends Authenticatable
 
     public function hasRoles(array $roles)
     {
-        foreach($roles as $userRole){
 
+        return $this->roles->pluck('name')->intersect($roles)->count(); 
+        // Estamos tratando de comparar el array de roles de usuario y el array que recibimos por parámetro. Por eso usamos intersect
+        // count para que devuelva 1 o 0 (true o false) si existen intersecciones
 
-            foreach($userRole->name as $role){
-                if($this->roles->name === $role){
-                    return true;
-                }
-            }
+        // foreach($roles as $userRole){
+        //     foreach($userRole->name as $role){
+        //         if($this->roles->name === $role){
+        //             return true;
+        //         }
+        //     }
+        // }
 
-
-        }
         return false;
 
     }
 
+    public function isAdmin()
+    {
+        return $this->hasRoles(['admin']);
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('users.show', compact('user'));
+    }
 
 
 
