@@ -12,9 +12,13 @@
 
 <div class="card text-center">
   <div class="card-body">
-  <img src="/storage/{{ $articulos[0]->imagen }}" alt="{{ $articulos[0]->titular }}"><br><br>
-    <h5 class="card-title">{{$articulos[0]->titular}}</h5>
-    <p class="card-text">{{$articulos[0]->entradilla}}</p>
+
+    <h5 class="card-title">{{$articulo1->titular}}</h5>
+    <p class="card-text">{{$articulo1->entradilla}}</p>
+
+    @if ($articulo1->user_id)
+    <p class="card-text">Autor: {{$articulo1->user->name}}</p>
+    @endif
 
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
@@ -22,56 +26,8 @@
 </div>
 
 
-<div class="row mt-5">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <img src="/storage/{{ $articulos[1]->imagen }}" alt="{{ $articulos[1]->titular }}" class="img-fluid  mx-auto d-block"><br><br>
-        <h5 class="card-title">    {{$articulos[1]->titular}}</h5>
-        <p class="card-text">{{$articulos[1]->entradilla}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <img src="/storage/{{ $articulos[2]->imagen }}" alt="{{ $articulos[2]->titular }}" class="mx-auto d-block"><br><br>
-        <h5 class="card-title">    {{$articulos[2]->titular}}</h5>
-        <p class="card-text">{{$articulos[2]->entradilla}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
 
-
-<div class="card text-center mt-5">
-  <div class="card-body">
-        <img src="/storage/{{ $articulos[3]->imagen }}" alt="{{ $articulos[3]->titular }}"><br><br>
-    <h5 class="card-title">    {{$articulos[3]->titular}}</h5>
-    <p class="card-text">{{$articulos[3]->entradilla}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-    <!-- <ul class="m-0 p-0">
-        @forelse($articulos as $articulo)
-
-        <div class="card" >
-            <div class="card-body">
-                <h5 class="card-title">{{ $articulo->titular }}</h5>
-                <p class="card-text">{{ $articulo->entradilla }}</p>
-            </div>
-        </div>
-
-
-            <br>
-            @empty
-            <li>No hay proyectos</li>
-        @endforelse
-    </ul> -->
-</div>
+  
 
 </body>
 </html>

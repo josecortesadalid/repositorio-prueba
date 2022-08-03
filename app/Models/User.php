@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -80,6 +81,12 @@ class User extends Authenticatable
     {
         $user = User::findOrFail($id);
         return view('users.show', compact('user'));
+    }
+
+    public function articulos()  // Un usuario, puede tener varios artículos
+    {
+        return $this->hasMany(Articulo::class, 'user_id');
+        // con hasOne sería solo uno
     }
 
 
