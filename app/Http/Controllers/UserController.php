@@ -45,7 +45,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create( $request->all() );
+        $user->roles()->attach( $request->roles ); // Asigna el rol al usuario. Lo que hace es crear en la tabla assigned roles un nuevo registro
+        return redirect()->route('usuarios.index');
     }
 
     /**
