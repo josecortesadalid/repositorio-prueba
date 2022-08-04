@@ -13,6 +13,11 @@ class Alert extends Model
 
     public function articulos()
     {
-        $this->morphedByMany(Articulo::class, 'alertable');
+        return $this->morphedByMany(Articulo::class, 'alertable');
+    }
+
+    public function users()
+    {
+        return $this->morphedByMany(User::class, 'alertable');
     }
 }

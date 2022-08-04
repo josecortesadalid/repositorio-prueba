@@ -41,6 +41,12 @@
         {{$users->first()->ayuda->body }}
         </div>
 
+        <!-- Mostramos el texto de alerta que corresponde a este artículo -->
+        <div class="alert alert-danger mx-5" role="alert">
+        {{$users->first()->alerts->pluck('name')->implode(', ')}}
+        </div>
+
+
         @foreach ($users as $user)
             <tr>
 

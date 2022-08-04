@@ -15,7 +15,7 @@ class CreateAlertableTable extends Migration
     {
         Schema::create('alertables', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tag_id')->unsigned();
+            $table->integer('alert_id')->unsigned();
             $table->integer('alertable_id')->unsigned();
             $table->string('alertable_type');
             $table->timestamps();

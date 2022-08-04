@@ -25,6 +25,11 @@
     {{$articulo1->ayuda->body}}
     </div>
 
+    <!-- Mostramos el texto de alerta que corresponde a este artículo -->
+    <div class="alert alert-danger mx-5" role="alert">
+    {{$articulo1->alerts->pluck('name')->implode(', ')}}
+    </div>
+
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 

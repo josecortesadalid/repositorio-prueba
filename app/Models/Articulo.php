@@ -27,5 +27,10 @@ class Articulo extends Model
         return $this->morphOne(Ayuda::class, 'helpable'); // recibe como parámetro la llave/prefijo que utilizamos al crear la migración 
     }
 
+    public function alerts()
+    {
+        return $this->morphToMany(Alert::class, 'alertable');
+    }
+
 }
 
