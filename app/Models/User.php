@@ -95,6 +95,12 @@ class User extends Authenticatable
         // con hasOne sería solo uno
     }
 
+    
+    public function ayuda()
+    {
+        return $this->morphOne(Ayuda::class, 'helpable'); // recibe como parámetro la llave/prefijo que utilizamos al crear la migración 
+    }
+
 
 
 }

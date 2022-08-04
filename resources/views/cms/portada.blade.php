@@ -20,10 +20,16 @@
     <p class="card-text">Autor: {{$articulo1->user->name}}</p>
     @endif
 
+    <!-- Mostramos el texto de ayuda que corresponde a este artículo -->
+    <div class="alert alert-warning mx-5" role="alert">
+    {{$articulo1->ayuda->body}}
+    </div>
+
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 
 </div>
+
 
 
 

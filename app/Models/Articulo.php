@@ -21,5 +21,11 @@ class Articulo extends Model
     {
         return $this->belongsTo(User::class); // el artículo pertenece a un usuario
     }
+
+    public function ayuda()
+    {
+        return $this->morphOne(Ayuda::class, 'helpable'); // recibe como parámetro la llave/prefijo que utilizamos al crear la migración 
+    }
+
 }
 

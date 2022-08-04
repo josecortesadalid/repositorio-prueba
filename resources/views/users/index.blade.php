@@ -35,10 +35,17 @@
             </tr>
         </thead>
         <tbody>
+
+        <!-- Mostramos el texto de ayuda que le corresponde al primer usuario -->
+        <div class="alert alert-warning mx-5" role="alert">
+        {{$users->first()->ayuda->body }}
+        </div>
+
         @foreach ($users as $user)
             <tr>
 
                 <td> {{ $user->name }} </td>
+   
                 <td> 
                     @foreach ($user->roles as $role)
                     <p><b> {{ $role->pluck('display_name')->implode(' - ') }} </b></p>
