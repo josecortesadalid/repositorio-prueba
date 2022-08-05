@@ -26,9 +26,11 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-// DB::listen(function($query){
-//     var_dump($query->sql);
-// });
+DB::listen(function($query){
+    var_dump($query->sql);
+});
+
+
 
 Route::get('/', function () {
     return view('welcome');

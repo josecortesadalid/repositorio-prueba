@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -22,7 +23,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::with(['roles', 'ayuda'])->get(); 
+        // En lugar de poner all() para que devuelva todos los usuarios, le ponemos with para que traiga también 
+        // También debemos llamar al método get para que se ejecute la consulta
         return view('users.index', compact('users'));
         // return $users;
     }
