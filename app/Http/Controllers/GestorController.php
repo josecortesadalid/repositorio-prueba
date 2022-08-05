@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BoletinEnviado;
+use App\Events\MessageWasReceived;
 use App\Http\Requests\SaveArticleRequest;
 use App\Mail\MensajeRecibido;
 use App\Models\Articulo;
@@ -80,18 +82,17 @@ class GestorController extends Controller
         {
             $art = auth()->user()->articulos()->create($fields);
 
+
+
             Mail::send('emails.boletin', ['art'=> $art], function($a) use ($art){
                 $a->to('jose.cortes@adalid.net', 'Jose')->subject('Tu mensaje fue recibido');
             });
-    
 
+            event(new BoletinEnviado($art));
+    
         }
 
-
-
         // $articulo->save();
-
-
 
         return back()->with('status', 'El articulo ha sido creado');
 

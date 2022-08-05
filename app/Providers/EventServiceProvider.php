@@ -14,12 +14,15 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<class-string, array<int, class-string>>
      */
-    protected $listen = [
+    protected $listen = [  // aquí definimos los eventos y los listenners de cada evento
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
         \App\Events\ProjectSaved::class => [
             \App\Listeners\OptimizeProjectImage::class
+        ],
+        '\App\Events\BoletinEnviado' => [
+            '\App\Listeners\SendaAutoresponder',
         ]
     ];
 
