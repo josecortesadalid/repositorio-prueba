@@ -78,7 +78,12 @@ class GestorController extends Controller
 
         if(auth()->check())
         {
-            auth()->user()->articulos()->create($fields);
+            $art = auth()->user()->articulos()->create($fields);
+
+            Mail::send('emails.boletin', ['art'=> $art], function($a) use ($art){
+                $a->to('jose.cortes@adalid.net', 'Jose')->subject('Tu mensaje fue recibido');
+            });
+    
 
         }
 
@@ -141,5 +146,6 @@ class GestorController extends Controller
 
         return Articulo::all();
     }
+
 
 }
