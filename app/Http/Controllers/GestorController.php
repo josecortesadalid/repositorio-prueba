@@ -84,9 +84,9 @@ class GestorController extends Controller
 
 
 
-            Mail::send('emails.boletin', ['art'=> $art], function($a) use ($art){
-                $a->to('jose.cortes@adalid.net', 'Jose')->subject('Tu mensaje fue recibido');
-            });
+
+
+            // dd($art);
 
             event(new BoletinEnviado($art));
     
@@ -94,7 +94,7 @@ class GestorController extends Controller
 
         // $articulo->save();
 
-        return back()->with('status', 'El articulo ha sido creado');
+        return back()->with('status', 'El articulo ha sido creado y se ha enviado a la cuenta de correo');
 
     }
 

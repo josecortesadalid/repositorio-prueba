@@ -21,9 +21,16 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\ProjectSaved::class => [
             \App\Listeners\OptimizeProjectImage::class
         ],
-        '\App\Events\BoletinEnviado' => [
-            '\App\Listeners\SendaAutoresponder',
-        ]
+
+        \App\Events\BoletinEnviado::class => [
+            \App\Listeners\SendaAutoresponder::class
+        ],
+
+
+
+        // '\App\Events\BoletinEnviado' => [
+        //     '\App\Listeners\SendaAutoresponder',
+        // ]
     ];
 
     /**
