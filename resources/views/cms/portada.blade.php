@@ -45,7 +45,7 @@
 
 
 <div class="card text-center">
-{!! $portadas->links() !!}
+{!! $portadas->links('pagination::bootstrap-4') !!}
 </div>
 
 
