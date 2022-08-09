@@ -10,6 +10,7 @@ use App\Models\Articulo;
 use App\Models\User;
 use App\Models\Portada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -32,8 +33,23 @@ class GestorController extends Controller
         // $posicion3 = $portada->posicion3;
         // $posicion4 = $portada->posicion4;
 
-        $portadas = Portada::paginate(5);
-        $articulo1 = Articulo::find(1);
+        $key = "portadas.page." . request('page', 1);
+
+        $portadas = Cache::rememberForever($key, function()  // remember verifica si key existe. Si no existe, almacena lo que devuelve la función
+        {
+            return Portada::paginate(5);
+        });
+
+
+        // // Replicamos el funcionamiento que mostraba el esquema
+        // if(Cache::has('key')){
+        //     $portadas = Cache::get('key');
+        // }else{
+        //     $portadas = Portada::paginate(5);
+        //     Cache::put('key', $portadas, 600);
+        // }
+        // $articulo1 = Articulo::find(1);
+
         // $articulo1 = DB::table('articulos')->find($posicion1);
         // $articulo2 = DB::table('articulos')->find($posicion2);
         // $articulo3 = DB::table('articulos')->find($posicion3);
@@ -83,9 +99,7 @@ class GestorController extends Controller
         {
             $art = auth()->user()->articulos()->create($fields);
 
-
-
-
+            Cache::flush(); // limpiamos la caché para que cuando actualicemos la portada, la genere devolviéndonos todos los mensajes
 
             // dd($art);
 
