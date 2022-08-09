@@ -35,10 +35,19 @@
 
 </div>
 
+@foreach ($portadas as $portada)
+  <div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">{{$portada->nombre_portada}}</h5>
+  </div>
+</div>
+@endforeach
 
 
+<div class="card text-center">
+{!! $portadas->links() !!}
+</div>
 
-  
 
 </body>
 </html>

@@ -32,6 +32,7 @@ class GestorController extends Controller
         // $posicion3 = $portada->posicion3;
         // $posicion4 = $portada->posicion4;
 
+        $portadas = Portada::paginate(5);
         $articulo1 = Articulo::find(1);
         // $articulo1 = DB::table('articulos')->find($posicion1);
         // $articulo2 = DB::table('articulos')->find($posicion2);
@@ -44,7 +45,7 @@ class GestorController extends Controller
         // , $articulo3, $articulo4
         // $articulos = Articulo::get();
 
-        return view('cms.portada', compact('articulo1'));
+        return view('cms.portada', compact('portadas', 'articulo1'));
     }
 
     /**
