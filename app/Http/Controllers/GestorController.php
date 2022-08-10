@@ -9,6 +9,8 @@ use App\Mail\MensajeRecibido;
 use App\Models\Articulo;
 use App\Models\User;
 use App\Models\Portada;
+use App\Repositories\Articulos;
+use App\Repositories\CachePortadas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -17,13 +19,21 @@ use Illuminate\Support\Facades\Mail;
 class GestorController extends Controller
 {
 
-    public function __construct()
+    protected $portadas;
+
+    public function __construct(CachePortadas $portadas)
     {
+    $this->portadas = $portadas;
        $this->middleware('auth')->only('create', 'store', 'edit', 'update', 'destroy'); 
     }
 
     public function index()
     {
+
+        $portadas = $this->portadas->getPaginated();
+        $articulo1 = Articulo::find(1);
+
+
 
         // $portada = Portada::where('nombre_portada', 'portada1')->first();
         // $portada = DB::table('portadas')->where('nombre_portada', 'portada1')->first();
@@ -33,22 +43,20 @@ class GestorController extends Controller
         // $posicion3 = $portada->posicion3;
         // $posicion4 = $portada->posicion4;
 
-        $key = "portadas.page." . request('page', 1);
+        // $key = "portadas.page." . request('page', 1);
 
-        $portadas = Cache::rememberForever($key, function()  // remember verifica si key existe. Si no existe, almacena lo que devuelve la función
-        {
-            return Portada::paginate(5);
-        });
+        // $portadas = Portada::paginate(5);
 
+        // $portadas = Cache::tags('portadas')->rememberForever($key, function()  // remember verifica si key existe. Si no existe, almacena lo que devuelve la función
+        // {
+        //     return Portada::paginate(5);
+        // });
 
+        // Cache::flush(); 
         // // Replicamos el funcionamiento que mostraba el esquema
-        // if(Cache::has('key')){
-        //     $portadas = Cache::get('key');
-        // }else{
-        //     $portadas = Portada::paginate(5);
-        //     Cache::put('key', $portadas, 600);
-        // }
-        // $articulo1 = Articulo::find(1);
+
+
+
 
         // $articulo1 = DB::table('articulos')->find($posicion1);
         // $articulo2 = DB::table('articulos')->find($posicion2);
@@ -84,9 +92,12 @@ class GestorController extends Controller
      */
     public function store(SaveArticleRequest $request)
     {
-
-        
         $fields = $request->validated();
+
+        $art = $this->portadas->store($fields);
+
+        event(new BoletinEnviado($art));
+
 
         // $fields->imagen = base64_encode(file_get_contents($request->file('image')->pat‌​h()));
         // return $fields->imagen;
@@ -94,20 +105,6 @@ class GestorController extends Controller
         // $articulo = Articulo::create($fields);
         // $articulo->imagen = $request->file('imagen')->store('images');
 
-
-        if(auth()->check())
-        {
-            $art = auth()->user()->articulos()->create($fields);
-
-            Cache::flush(); // limpiamos la caché para que cuando actualicemos la portada, la genere devolviéndonos todos los mensajes
-
-            // dd($art);
-
-            event(new BoletinEnviado($art));
-    
-        }
-
-        // $articulo->save();
 
         return back()->with('status', 'El articulo ha sido creado y se ha enviado a la cuenta de correo');
 

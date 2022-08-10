@@ -31,7 +31,6 @@ DB::listen(function($query){
 });
 
 
-
 Route::get('/', function () {
     return view('welcome');
     // echo "<a href='" . route('articulos') . "'>Articulos 1</a><br>";

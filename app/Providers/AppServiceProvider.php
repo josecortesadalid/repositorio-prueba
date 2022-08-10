@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Articulos;
+use App\Repositories\ArticulosInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         Paginator::useBootstrap();
+
+        $this->app->bind(ArticulosInterface::class, Articulos::class);
     }
 }
