@@ -17,7 +17,8 @@
     <p class="card-text">{{$articulo1->entradilla}}</p>
 
     @if ($articulo1->user_id)
-    <p class="card-text">Autor: {{$articulo1->user->name}}</p>
+    <!-- <p class="card-text">Autor: {{$articulo1->user->name}}</p> -->
+    <p class="card-text">Autor: {{$articulo1->present()->userName()}}</p>
     @endif
 
     <!-- Mostramos el texto de ayuda que corresponde a este artículo -->

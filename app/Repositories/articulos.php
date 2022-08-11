@@ -27,4 +27,5 @@ class Articulos implements ArticulosInterface{
 
         }
     }
+
 }
