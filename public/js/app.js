@@ -5324,6 +5324,9 @@ Vue.component('example-component', (__webpack_require__(/*! ./components/Example
 var app = new Vue({
   el: '#app'
 });
+$('form').on('submit', function () {
+  $(this).find('input[type=submit]').attr('disabled', true);
+});
 
 /***/ }),
 

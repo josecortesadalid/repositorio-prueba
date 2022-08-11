@@ -12,6 +12,7 @@ use App\Http\Controllers\GestorController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
+use App\Jobs\SendEmail;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 
@@ -26,10 +27,15 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-DB::listen(function($query){
-    var_dump($query->sql);
-});
+// DB::listen(function($query){
+//     var_dump($query->sql);
+// });
 
+Route::get('job', function(){
+    dispatch(new SendEmail);
+
+    return 'Hecho';
+});
 
 Route::get('/', function () {
     return view('welcome');
