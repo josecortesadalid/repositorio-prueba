@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\UserPresenter;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,11 +49,7 @@ class User extends Authenticatable
     //     return $this->role === $role;
     // }
 
-
-    public function setPasswordAttribute($password) // tres partes: set (definir o modificar un valor antes de guardarlo en la db), nombre de lo que queremos modificar y attribute
-    {
-        $this->attributes['password'] = bcrypt($password); // Con esto, siempre se guardará el password  encriptado
-    }
+    protected $presenter = UserPresenter::class;
 
     public function roles()
     {
@@ -78,10 +75,7 @@ class User extends Authenticatable
 
     }
 
-    public function isAdmin()
-    {
-        return $this->hasRoles(['admin']);
-    }
+
 
     public function show($id)
     {
@@ -106,6 +100,9 @@ class User extends Authenticatable
         return $this->morphToMany(Alert::class, 'alertable');
     }
 
-
+    public function present()
+    {
+        return new UserPresenter($this);
+    }
 
 }

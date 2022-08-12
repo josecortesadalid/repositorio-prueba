@@ -21,7 +21,7 @@ class UserPolicy
 
     public function before($user, $ability) // método que se ejecutará antes. Si devuelve true, no se ejecutarán los otros
     {
-        if($user->isAdmin()){
+        if($user->present()->isAdmin()){
             return true;
         }
     }
