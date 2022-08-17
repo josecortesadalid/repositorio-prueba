@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Tests\\Feature\\GestorControllerTest::test_example":3},"times":{"Tests\\Feature\\GestorControllerTest::test_example":0.294}}
+{"version":1,"defects":{"Tests\\Feature\\GestorControllerTest::test_example":3,"Tests\\Feature\\GestorControllerTest::testIndex":4},"times":{"Tests\\Feature\\GestorControllerTest::test_example":0.294,"Tests\\Feature\\GestorControllerTest::testIndex":0.162}}

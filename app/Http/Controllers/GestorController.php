@@ -20,19 +20,22 @@ class GestorController extends Controller
 {
 
     protected $portadas;
+    protected $view;
 
-    public function __construct(CachePortadas $portadas)
+    public function __construct(CachePortadas $portadas, \Illuminate\Contracts\View\Factory $view)
     {
     $this->portadas = $portadas;
+    $this->view = $view;
        $this->middleware('auth')->only('create', 'store', 'edit', 'update', 'destroy'); 
     }
 
     public function index()
     {
         $portadas = $this->portadas->getPaginated();
-        // $articulo1 = Articulo::find(1);
+        $articulo1 = Articulo::find(1);
 
         // return view('cms.portada', compact('portadas', 'articulo1'));
+        return $this->view->make('cms.portada', ['portadas' => $portadas]);
 
         // $portada = Portada::where('nombre_portada', 'portada1')->first();
         // $portada = DB::table('portadas')->where('nombre_portada', 'portada1')->first();

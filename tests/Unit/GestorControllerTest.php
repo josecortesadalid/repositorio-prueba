@@ -30,9 +30,16 @@ class GestorControllerTest extends TestCase
     public function testIndex()
     {
         $articulosRepo = Mockery::mock('App\Repositories\CachePortadas');
-        $controller = new GestorController($articulosRepo);
+        $view = Mockery::mock('Illuminate\View\Factory');
+        $controller = new GestorController($articulosRepo, $view);
 
-        $articulosRepo->shouldReceive('getPaginated')->once(); // estamos esperando que llame a este método una vez
+        $articulosRepo->shouldReceive('getPaginated')
+        ->once()
+        ->andReturn('paginated_portadas'); // estamos esperando que llame a este método una vez
+
+        $view->shouldReceive('make')
+        ->with('cms.portada', ['portadas' => 'paginated_portadas'])
+        ->once();
 
         $controller->index(); // vamos al index del controlador
 
