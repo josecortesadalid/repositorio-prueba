@@ -4,7 +4,16 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+// import './bootstrap';
+console.log('prueba');
 require('./bootstrap');
+
+
+
+Echo.channel('articulos-channel')
+    .listen('BoletinEnviado', () => {
+        console.log('prueba');
+    })
 
 window.Vue = require('vue').default;
 
@@ -34,3 +43,4 @@ const app = new Vue({
 $('form').on('submit', function(){
     $(this).find('input[type=submit]').attr('disabled', true);
 })
+

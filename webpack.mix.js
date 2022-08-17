@@ -15,7 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
 
-mix.browserSync('http://app-prueba.test');
+mix.browserSync('http://repositorio-prueba.test');
 
 if(mix.inProduction()){
     mix.version();

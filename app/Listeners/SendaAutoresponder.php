@@ -32,8 +32,10 @@ class SendaAutoresponder implements ShouldQueue
     // Por parámetro recibe el evento al que está escuchando
     {
         $art = $event->art;
-        Mail::send('emails.boletin', ['art'=> $art], function($a) use ($art){
-        $a->to('jose.cortes@adalid.net', 'Jose')->subject('Tu mensaje fue recibido');
-        });
+
+        return 'prueba';
+        // Mail::send('emails.boletin', ['art'=> $art], function($a) use ($art){
+        // $a->to('jose.cortes@adalid.net', 'Jose')->subject('Tu mensaje fue recibido');
+        // });
     }
 }

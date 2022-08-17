@@ -29,11 +29,10 @@ class GestorController extends Controller
 
     public function index()
     {
-
         $portadas = $this->portadas->getPaginated();
-        $articulo1 = Articulo::find(1);
+        // $articulo1 = Articulo::find(1);
 
-
+        // return view('cms.portada', compact('portadas', 'articulo1'));
 
         // $portada = Portada::where('nombre_portada', 'portada1')->first();
         // $portada = DB::table('portadas')->where('nombre_portada', 'portada1')->first();
@@ -68,8 +67,6 @@ class GestorController extends Controller
         // array_push($articulos, $articulo1, $articulo2);
         // , $articulo3, $articulo4
         // $articulos = Articulo::get();
-
-        return view('cms.portada', compact('portadas', 'articulo1'));
     }
 
     /**
@@ -79,6 +76,8 @@ class GestorController extends Controller
      */
     public function create()
     {
+        $art = 'art';
+        event(new BoletinEnviado($art));
        return view('cms.create', [
             'articulo' => new Articulo 
         ]);
@@ -96,7 +95,7 @@ class GestorController extends Controller
 
         $art = $this->portadas->store($fields);
 
-        event(new BoletinEnviado($art));
+        // event(new BoletinEnviado($art));
 
 
         // $fields->imagen = base64_encode(file_get_contents($request->file('image')->pat‌​h()));
