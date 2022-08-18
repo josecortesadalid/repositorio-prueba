@@ -18,14 +18,16 @@ use Illuminate\Support\Facades\Mail;
 
 class GestorController extends Controller
 {
-
+    protected $articulo;
     protected $portadas;
     protected $view;
 
-    public function __construct(CachePortadas $portadas, \Illuminate\Contracts\View\Factory $view)
+    public function __construct(CachePortadas $portadas, \Illuminate\Contracts\View\Factory $view, \Illuminate\Routing\Redirector $redirect, Articulo $articulo)
     {
     $this->portadas = $portadas;
     $this->view = $view;
+    $this->redirect = $redirect;
+    $this->articulo = $articulo;
        $this->middleware('auth')->only('create', 'store', 'edit', 'update', 'destroy'); 
     }
 
@@ -81,9 +83,13 @@ class GestorController extends Controller
     {
         $art = 'art';
         event(new BoletinEnviado($art));
-       return view('cms.create', [
-            'articulo' => new Articulo 
-        ]);
+    //    return view('cms.create', [
+    //         'articulo' => new Articulo 
+    //     ]);
+
+    return $this->view->make('cms.create', [
+        'articulo' => new Articulo 
+    ]);
     }
 
     /**
@@ -94,9 +100,11 @@ class GestorController extends Controller
      */
     public function store(SaveArticleRequest $request)
     {
-        $fields = $request->validated();
+        // $fields = $request->validated();
 
-        $art = $this->portadas->store($fields);
+        // $art = $this->portadas->store($fields);
+
+        
 
         // event(new BoletinEnviado($art));
 
@@ -107,8 +115,10 @@ class GestorController extends Controller
         // $articulo = Articulo::create($fields);
         // $articulo->imagen = $request->file('imagen')->store('images');
 
+        // return $this->redirect->route('cms-create'); Esto serviría para testear la reidrección
 
-        return back()->with('status', 'El articulo ha sido creado y se ha enviado a la cuenta de correo');
+        // return back()->with('status', 'El articulo ha sido creado y se ha enviado a la cuenta de correo');
+        return $this->redirect->route('cms.create');
 
     }
 
@@ -122,6 +132,7 @@ class GestorController extends Controller
     {
         // $articulo = Articulo::find($id);
         $articulo = Articulo::findOrFail($id);
+        // $articulo = $this->articulo->findById($id);
 
         return $articulo;
     }
