@@ -28,7 +28,7 @@ class GestorController extends Controller
     $this->view = $view;
     $this->redirect = $redirect;
     $this->articulo = $articulo;
-       $this->middleware('auth')->only('create', 'store', 'edit', 'update', 'destroy'); 
+       $this->middleware('auth')->only('edit', 'update', 'destroy'); 
     }
 
     public function index()
@@ -36,8 +36,8 @@ class GestorController extends Controller
         $portadas = $this->portadas->getPaginated();
         $articulo1 = Articulo::find(1);
 
-        // return view('cms.portada', compact('portadas', 'articulo1'));
-        return $this->view->make('cms.portada', ['portadas' => $portadas]);
+        return view('cms.portada', compact('portadas', 'articulo1'));
+        // return $this->view->make('cms.portada', ['portadas' => $portadas]);
 
         // $portada = Portada::where('nombre_portada', 'portada1')->first();
         // $portada = DB::table('portadas')->where('nombre_portada', 'portada1')->first();
@@ -100,13 +100,13 @@ class GestorController extends Controller
      */
     public function store(SaveArticleRequest $request)
     {
-        // $fields = $request->validated();
+        $fields = $request->validated();
 
-        // $art = $this->portadas->store($fields);
+        $art = $this->portadas->store($fields);
 
         
 
-        // event(new BoletinEnviado($art));
+        event(new BoletinEnviado($art));
 
 
         // $fields->imagen = base64_encode(file_get_contents($request->file('image')->pat‌​h()));
@@ -117,8 +117,8 @@ class GestorController extends Controller
 
         // return $this->redirect->route('cms-create'); Esto serviría para testear la reidrección
 
-        // return back()->with('status', 'El articulo ha sido creado y se ha enviado a la cuenta de correo');
-        return $this->redirect->route('cms.create');
+        return back()->with('status', 'El articulo ha sido creado y se ha enviado a la cuenta de correo');
+        // return $this->redirect->route('cms.create');
 
     }
 

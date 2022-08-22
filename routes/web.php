@@ -31,11 +31,11 @@ use Illuminate\Support\Facades\DB;
 //     var_dump($query->sql);
 // });
 
-Route::get('job', function(){
-    dispatch(new SendEmail);
+// Route::get('job', function(){
+//     dispatch(new SendEmail);
 
-    return 'Hecho';
-});
+//     return 'Hecho';
+// });
 
 Route::get('/', function () {
     return view('welcome');

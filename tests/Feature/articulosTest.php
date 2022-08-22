@@ -23,7 +23,7 @@ class articulosTest extends TestCase
 
      public function comun()
      {
-        $this->repo = new Articulos;
+        $this->repo = new Articulos();
      }
 
     /** @test */
@@ -32,12 +32,15 @@ class articulosTest extends TestCase
         $this->comun();
         // Given - Teniendo más de 5 portadas
         // factory(Portada::class, 7)->create();
-        $portada = Portada::factory()->times(7);
+        // $portada = Portada::factory()->times(7);
+        $portada = Portada::factory()->times(7)->make([
+            'nombre' => 'Nombre de prueba para test',
+        ]);
 
         // When - Cuando ejecutamos el método getPaginated
         $result = $this->repo->getPaginated();
 
         // Then - Entonces, debemos obtener 5 portadas solamente
-        $this->assertCount(0, $result);
+        $this->assertCount(5, $result);
     }
 }
